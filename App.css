@@ -28,7 +28,7 @@ header {
 
 header h1 {
   font-size: 2rem;
-  color: #4caf50;
+  color: #007bff;
 }
 
 header p {
@@ -50,15 +50,18 @@ form input, form button {
 }
 
 form button {
-  background: #4caf50;
+  background: #007bff;
   color: white;
   border: none;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  border-radius: 4px;
   cursor: pointer;
   transition: background 0.3s;
 }
 
 form button:hover {
-  background: #45a049;
+  background: #0056b3;
 }
 
 ul {
@@ -72,7 +75,7 @@ ul li {
   background: #f4f4f4;
   border-radius: 4px;
   margin-bottom: 1rem;
-  border-left: 4px solid #4caf50;
+  border-left: 4px solid #007bff;
 }
 
 ul li p {
