@@ -4,6 +4,7 @@ const LogEntryForm = ({ addEntry }) => {
     const [quantity, setQuantity] = useState('');
     const [unit, setUnit] = useState('oz');
     const [notes, setNotes] = useState('');
+    const [error, setError] = useState("");
 
     const toggleUnit = () => {
         setUnit((prevUnit) => (prevUnit === 'oz' ? 'mL' : 'oz'));
@@ -11,6 +12,13 @@ const LogEntryForm = ({ addEntry }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (quantity <= 0) {
+            alert("Please enter a valid quantity greater than 0.");
+            return;
+        }
+
+        setError("");
         addEntry({
             id: Date.now(),
             date: new Date().toLocaleDateString(),
@@ -25,6 +33,7 @@ const LogEntryForm = ({ addEntry }) => {
 
     return (
         <form onSubmit={handleSubmit}>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
             <div>
                 <label>
                     Quantity ({unit}):
@@ -33,6 +42,7 @@ const LogEntryForm = ({ addEntry }) => {
                         value={quantity}
                         onChange={(e) => setQuantity(e.target.value)}
                         placeholder={`Enter quantity in ${unit}`}
+                        min={0}
                         required
                     />
                 </label>

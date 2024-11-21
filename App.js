@@ -8,6 +8,10 @@ function App() {
   const [entries, setEntries] = useState([]);
 
   const addEntry = (newEntry) => setEntries([newEntry, ...entries]);
+
+  const deleteEntry = (id) => {
+    setEntries((prevEntries) => prevEntries.filter((entry) => entry.id !== id));
+  }
   return (
     <div className="container">
       <header>
@@ -16,7 +20,7 @@ function App() {
       </header>
       <LogEntryForm addEntry={addEntry} />
       <StatsSummary entries={entries} />
-      <LogEntryList entries={entries} />
+      <LogEntryList entries={entries} deleteEntry={deleteEntry}/>
     </div>
   );
 }
