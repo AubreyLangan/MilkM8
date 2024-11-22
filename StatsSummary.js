@@ -5,10 +5,10 @@ const StatsSummary = ({ entries }) => {
     const ozEntries = entries.filter((entry) => entry.unit === 'oz');
     const mlEntries = entries.filter((entry) => entry.unit === 'mL');
 
-    const totalOz = ozEntries.reduce((sum, entry) => sum + parseFloat(entry.quantity), 0);
+    const totalOz = ozEntries.reduce((sum, entry) => sum + parseFloat(entry.quantity), 0).toFixed(2);
     const averageOz = ozEntries.length > 0 ? (totalOz / ozEntries.length).toFixed(2) : 0;
 
-    const totalMl = mlEntries.reduce((sum, entry) => sum + parseFloat(entry.quantity), 0);
+    const totalMl = mlEntries.reduce((sum, entry) => sum + parseFloat(entry.quantity), 0).toFixed(2);
     const averageMl = mlEntries.length > 0 ? (totalMl / mlEntries.length).toFixed(2) : 0;
 
     return (

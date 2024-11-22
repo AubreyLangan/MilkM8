@@ -13,7 +13,8 @@ const LogEntryForm = ({ addEntry }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (quantity <= 0) {
+        const parsedQuantity = parseFloat(quantity);
+        if (isNaN(parsedQuantity) || parsedQuantity <= 0) {
             alert("Please enter a valid quantity greater than 0.");
             return;
         }
@@ -43,6 +44,7 @@ const LogEntryForm = ({ addEntry }) => {
                         onChange={(e) => setQuantity(e.target.value)}
                         placeholder={`Enter quantity in ${unit}`}
                         min={0}
+                        step="0.01"
                         required
                     />
                 </label>
