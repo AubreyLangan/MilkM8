@@ -1,11 +1,11 @@
 import React from "react";
 import LogEntryForm from '../Components/LogEntryForm';
 
-const LogEntry = () => {
+const LogEntry = ({ addEntry }) => {
     return (
         <div>
             <h1>Log Your Milk</h1>
-            <LogEntryForm />
+            <LogEntryForm onSubmit={addEntry}/>
         </div>
     );
 };

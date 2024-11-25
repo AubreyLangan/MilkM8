@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const LogEntryForm = ({ addEntry }) => {
+const LogEntryForm = ({ onSubmit }) => {
     const [quantity, setQuantity] = useState('');
     const [unit, setUnit] = useState('oz');
     const [notes, setNotes] = useState('');
@@ -15,19 +15,20 @@ const LogEntryForm = ({ addEntry }) => {
 
         const parsedQuantity = parseFloat(quantity);
         if (isNaN(parsedQuantity) || parsedQuantity <= 0) {
-            alert("Please enter a valid quantity greater than 0.");
+            setError("Please enter a valid quantity greater than 0.");
             return;
         }
 
         setError("");
-        addEntry({
-            id: Date.now(),
-            date: new Date().toLocaleDateString(),
-            time: new Date().toLocaleTimeString(),
-            quantity,
-            unit,
-            notes
-        });
+       onSubmit({
+        id: Date.now(),
+        date: new Date().toLocaleDateString(),
+        time: new Date().toLocaleTimeString(),
+        quantity: parsedQuantity,
+        unit,
+        notes: notes.trim(),
+       });
+
         setQuantity('');
         setNotes('');
     };
