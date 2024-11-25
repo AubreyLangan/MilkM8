@@ -136,3 +136,13 @@ button {
 button:hover {
   background: #d32f2f;
 }
+
+.success-message {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 14px;
+}
