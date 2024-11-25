@@ -5,6 +5,7 @@ const LogEntryForm = ({ onSubmit }) => {
     const [unit, setUnit] = useState('oz');
     const [notes, setNotes] = useState('');
     const [error, setError] = useState("");
+    const [successMessage, setSuccessMessage] = useState('');
 
     const toggleUnit = () => {
         setUnit((prevUnit) => (prevUnit === 'oz' ? 'mL' : 'oz'));
@@ -29,6 +30,10 @@ const LogEntryForm = ({ onSubmit }) => {
         notes: notes.trim(),
        });
 
+       setSuccessMessage("Pump session logged successfully!")
+
+       setTimeout(() => setSuccessMessage(''), 3000);
+
         setQuantity('');
         setNotes('');
     };
@@ -36,6 +41,7 @@ const LogEntryForm = ({ onSubmit }) => {
     return (
         <form onSubmit={handleSubmit}>
             {error && <p style={{ color: 'red' }}>{error}</p>}
+            {successMessage && <div className='success-message'>{successMessage}</div>}
             <div>
                 <label>
                     Quantity ({unit}):
