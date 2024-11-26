@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import Navbar from "./Components/Navbar";
 import Home from './Pages/Home';
 import LogEntry from './Pages/LogEntry';
 import Stats from './Pages/Stats';
@@ -12,22 +13,21 @@ const App = () => {
     setEntries((prevEntries) => [...prevEntries, entry]);
   };
 
-  return (
-    <div>
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/log-entry">Log Entry</Link></li>
-          <li><Link to="/stats">Stats</Link></li>
-        </ul>
-      </nav>
+  const deleteEntry = (id) => {
+    setEntries((prevEntries) => prevEntries.filter((entry) => entry.id !== id));
+  }
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/log-entry" element={<LogEntry addEntry={addEntry} />} />
-        <Route path="/stats" element={<Stats entries={entries} />} />
-      </Routes>
-    </div>
+  return (
+      <div className="app">
+        <Navbar />
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/log-entry" element={<LogEntry addEntry={addEntry} entries={entries} deleteEntry={deleteEntry}/>} />
+            <Route path="/stats" element={<Stats entries={entries} />} />
+          </Routes>
+        </div>
+      </div>
   );
 };
 
