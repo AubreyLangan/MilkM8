@@ -1,11 +1,26 @@
 import React from "react";
-import { NavLink  } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import BackButton from "./BackButton";
+import logoidea from "../Assets/logoidea2.PNG";
 import './Navbar.css'
 
-const Navbar = () => {
+const Navbar = ({ toggleTheme, theme }) => {
+    const location = useLocation();
+    const isHome = location.pathname === "/";
+
     return (
       <nav className="navbar">
-        <div className="logo">MilkM8</div>
+
+        <div className="navbar-logo">
+            <NavLink to="/">
+                <img src={logoidea} alt="MilkM8 Logo" className="logo-image" />
+            </NavLink>
+        </div>
+
+        <button onClick={toggleTheme}>
+            {theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
+        </button>
+        {!isHome && <BackButton />}
         <ul className="menu">
             <li>
                 <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>

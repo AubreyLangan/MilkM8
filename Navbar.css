@@ -19,6 +19,12 @@
     padding: 0;
 }
 
+.logo-image {
+    height: 50px;
+    width: auto;
+    cursor: pointer;
+}
+
 .navbar .menu {
     list-style: none;
     display: flex;
@@ -57,3 +63,13 @@
         gap: 10px;
     }
 }
+
+/* .app.light .navbar { */
+    background-color: #b3d9ff;
+    color: #003366;
+/* } */
+
+/* .app.dark .navbar { */
+    background-color: #003366;
+    color: #cce7ff;
+/* } */
