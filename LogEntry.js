@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LogEntryForm from '../Components/LogEntryForm';
 import EditEntryForm from "../Components/EditEntryForm";
+import Timer from "../Components/Timer";
 
 const LogEntry = ({ addEntry, entries = [], deleteEntry, updateEntry }) => {
     const [editingEntry, setEditingEntry] = useState(null);
@@ -16,9 +17,28 @@ const LogEntry = ({ addEntry, entries = [], deleteEntry, updateEntry }) => {
         setEditingEntry(null);
     };
 
+    const handleTimerSubmit = ({ time }) => {
+        const minutes = Math.floor(time / 60);
+        const seconds = time / 60;
+
+        const entry = {
+            id: Date.now(),
+            quantity: 0,
+            time: `${minutes}m ${seconds}s`,
+            unit: 'Oz',
+            date: new Date().toLocaleDateString(),
+            notes: 'Added via Timer',
+        };
+
+        addEntry(entry);
+    };
+
     return (
         <div>
             <h1>Log Your Milk</h1>
+
+            <Timer onSubmit={handleTimerSubmit} />
+            
             <LogEntryForm onSubmit={addEntry}/>
             <h2>Logged Entries:</h2>
             <ul>
