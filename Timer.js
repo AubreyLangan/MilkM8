@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Timer = ({ onsubmit }) => {
+const Timer = ({ onSubmit }) => {
     const [time, setTime] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
 
@@ -14,15 +14,15 @@ const Timer = ({ onsubmit }) => {
     };
 
     useEffect(() => {
-        let interval;
+        let timer;
         if (isRunning) {
-            interval = setInterval(() => {
+            timer = setInterval(() => {
                 setTime((prevTime) => prevTime + 1);
             }, 1000);
         } else if (!isRunning && time !== 0) {
-            clearInterval(interval);
+            clearInterval(timer);
         }
-        return () => clearInterval(interval);
+        return () => clearInterval(timer);
     }, [isRunning]);
 
     const formatTime = (time) => {
@@ -32,7 +32,9 @@ const Timer = ({ onsubmit }) => {
     };
 
     const saveSession = () => {
-        onsubmit({ time });
+        if (onSubmit) {
+            onSubmit({ time });
+        }
         resetTimer();
     };
 
