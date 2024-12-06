@@ -38,8 +38,8 @@ const Navbar = ({ toggleTheme, theme }) => {
                 </NavLink>
             </li>
             <li>
-                <NavLink to="/tips" className={({ isActive }) => (isActive ? "active" : "")}>
-                    Tips
+                <NavLink to="/resources" className={({ isActive }) => (isActive ? "active" : "")}>
+                    Resources
                 </NavLink>
             </li>
         </ul>
