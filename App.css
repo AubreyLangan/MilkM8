@@ -1,4 +1,4 @@
-body {
+ body {
   font-family: Arial, Helvetica, sans-serif;
   background: linear-gradient(to bottom, #e0f7fa, #b3e5fc);
   color: #01579b;
@@ -9,6 +9,7 @@ body {
 
 h1, h2, h3 {
   color: #0277bd;
+  text-align: center;
 }
 
 .home, .log-entry, .stats {
@@ -18,9 +19,9 @@ h1, h2, h3 {
   background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+} 
 
-button {
+ button {
   display: inline-block;
   padding: 10px 20px;
   margin: 5px;
@@ -54,9 +55,9 @@ input[type="text"] {
   border: 1px solid #0288d1;
   border-radius: 5px;
   font-size: 1em;
-}
+} 
 
-input[type="number"]:focus,
+ input[type="number"]:focus,
 input[type="text"]:focus {
   border-color: #03a9fa;
   box-shadow: 0 0 5px #03a9f4;
@@ -73,9 +74,9 @@ input[type="text"]:focus {
 .summary p {
   margin: 0;
   font-size: 1.2em;
-}
+} 
 
-.tips {
+ .tips {
   margin-top: 20px;
   padding: 15px;
   background: #e1f5fe;
@@ -86,26 +87,75 @@ input[type="text"]:focus {
 ul {
   list-style-type: none;
   padding: 0;
-}
+} 
 
-ul li {
+ ul li { 
   background: #e1f5fe;
   margin: 5px;
   padding: 10px;
   border-radius: 5px;
   color: #01579b;
-}
+ } 
 
-ul li:nth-child(odd) {
+ ul li:nth-child(odd) { 
   background: #b3e5fc;
-}
+ }
 
-@media (max-width: 600px) {
+ @media (max-width: 600px) {
   .home, .log-entry, .stats {
     padding: 10px;
   }
 
   button {
     width: 100%;
+    padding: 10px;
+    font-size: 16px;
   }
-}
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .navbar .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+  }
+
+  .navbar .menu li {
+    width: 100%;
+  }
+
+  .navbar .menu a {
+    text-align: left;
+    width: 100%;
+    display: block;
+  }
+
+  .theme-toggle {
+    margin-top: 10px;
+    align-self: stretch;
+  }
+
+  .timer {
+    text-align: center;
+  }
+
+  .timer button {
+    margin-top: 10px;
+  }
+
+  .card {
+    margin: 10px 0;
+  }
+
+  .logo {
+    font-size: 1.5em;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+ }
