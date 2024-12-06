@@ -19,9 +19,7 @@ const Timer = ({ onSubmit }) => {
             timer = setInterval(() => {
                 setTime((prevTime) => prevTime + 1);
             }, 1000);
-        } else if (!isRunning && time !== 0) {
-            clearInterval(timer);
-        }
+        } 
         return () => clearInterval(timer);
     }, [isRunning]);
 
