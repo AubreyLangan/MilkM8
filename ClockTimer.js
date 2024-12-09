@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import './ClockTimer.css';
 
 const ClockTimer = ({ onSubmit }) => {
     const [time, setTime] = useState(0);
@@ -26,9 +27,7 @@ const ClockTimer = ({ onSubmit }) => {
             timer = setInterval(() => {
                 setTime((prevTime) => prevTime + 1);
             }, 1000);
-        } else if (!isRunning && time !== 0) {
-            clearInterval(timer);
-        }
+        } 
         return () => clearInterval(timer);
     }, [isRunning]);
 
