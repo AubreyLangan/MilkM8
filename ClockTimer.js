@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import _ from "lodash";
 import './ClockTimer.css';
 
 const ClockTimer = ({ onSubmit }) => {
@@ -36,9 +37,29 @@ const ClockTimer = ({ onSubmit }) => {
         return { transform: `rotate(${rotation}deg)` };
     };
 
+    const formatTime = (time) => {
+        const hours = Math.floor(time / 3600);
+        const minutes = Math.floor((time % 3600) / 60);
+        const seconds = time % 60;
+        return `${String(hours).padStart(2, "0")}: ${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    };
+
     return (
         <div className="clock-timer">
             <div className="clock">
+                <div className="clock-numbers">
+                    {[...Array(12)].map((_, i) => (
+                        <div
+                            key={i}
+                            className="clock-number"
+                            style={{
+                                transform: `rotate(${i * 30}deg) translate(0, -130px) rotate(${-i * 30}deg)`
+                            }}
+                        >
+                            {i === 0 ? 12 : i}
+                        </div>
+                    ))}
+                </div>
                 <div
                     className="hand hour-hand"
                     style={getClockHandStyle(3600, 43200)}
@@ -53,6 +74,7 @@ const ClockTimer = ({ onSubmit }) => {
                 ></div>
                 <div className="center-dot"></div>
             </div>
+            <p>Time Elapsed: {formatTime(time)}</p>
             <div className="timer-controls">
                 <button onClick={toggleTimer}>
                     {isRunning ? "Pause" : "Start"}
