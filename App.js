@@ -6,6 +6,7 @@ import LogEntry from './Pages/LogEntry';
 import Stats from './Pages/Stats';
 import LogEntries from "./Components/LogEntries";
 import Resources from "./Components/Resources";
+import MilkStashCalculator from "./Components/Calculator";
 import './App.css';
 
 const App = () => {
@@ -52,6 +53,7 @@ const App = () => {
             <Route path="/stats" element={<Stats entries={entries} />} />
             <Route path="log-entries" element={<LogEntries entries={entries} updateEntry={updateEntry}  setEntries={setEntries} />} />
             <Route path="/resources" element={<Resources />} />
+            <Route path="/calculator" element={<MilkStashCalculator />} />
           </Routes>
         </div>
       </div>

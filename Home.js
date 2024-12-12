@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import TipsGenerator from "../Components/TipsGenerator";
+import MilkStashCalculator from "../Components/Calculator";
 
 const Home = ({ entries = [] }) => {
     const navigate = useNavigate();
@@ -32,9 +34,13 @@ const Home = ({ entries = [] }) => {
                 ))}
             </ul>
 
+            <div>
+                <h2>Milk Stash Calculator</h2>
+                <MilkStashCalculator />
+            </div>
+
             <div className="tips">
-                <h2>Breastfeeding Tips</h2>
-                <p>"Stay hydrated and keep a positive mindset - every ounce is a step forward!"</p>
+                <TipsGenerator />
             </div>
         </div>
     );
