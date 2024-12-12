@@ -10,7 +10,7 @@ const MilkStashCalculator = () => {
             alert("Please enter valid numbers for both fields.");
             return;
         }
-        const days = (stash / dailyConsumption || dailyConsumption).toFixed(1);
+        const days = (stash / dailyConsumption).toFixed(1);
         setResult(days);
     };
 
@@ -25,9 +25,35 @@ const MilkStashCalculator = () => {
             >
                 <label>
                     Total Milk in Stash (oz or ml):
-                    
+                    <input
+                        type="number"
+                        value={stash}
+                        onChange={(e) => setStash(e.target.value)}
+                        placeholder="Enter stash amount"
+                        required
+                    />
                 </label>
+                <label>
+                    Baby's Daily Consumption (oz or ml):
+                    <input 
+                        type="number"
+                        value={dailyConsumption}
+                        onChange={(e) => setDailyConsumption(e.target.value)}
+                        placeholder="Enter daily consumption"
+                        required
+                    />
+                </label>
+                <button type="submit">Calculate</button>
             </form>
+            {result !== null && (
+                <div className="result">
+                    <p>
+                        Your stash will last approximately <strong>{result}</strong> days.
+                    </p>
+                </div>
+            )}
         </div>
-    )
-}
+    );
+};
+
+export default MilkStashCalculator;
