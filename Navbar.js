@@ -43,7 +43,7 @@ const Navbar = ({ toggleTheme, theme }) => {
                 </NavLink>
             </li>
             <li>
-                <NavLink to="calculator" className={({ isActive }) => (isActive ? "active" : "")}>
+                <NavLink to="/calculators" className={({ isActive }) => (isActive ? "active" : "")}>
                     Calculator
                 </NavLink>
             </li>
