@@ -3,6 +3,7 @@ import MilkStashCalculator from "../Components/Calculators/Calculator";
 import DepletionCalculator from "../Components/Calculators/DepletionCalculator";
 import TargetGoalCalculator from "../Components/Calculators/TargetGoalCalculator";
 import EventMilkCalculator from "../Components/Calculators/EventMilkCalculator";
+import AverageProductionCalculator from "../Components/Calculators/AverageProductionCalculator";
 
 const CalculatorPage = () => {
     return (
@@ -23,6 +24,10 @@ const CalculatorPage = () => {
             <div className="calculator-section">
                 <h2>Event Milk Calculator</h2>
                 <EventMilkCalculator />
+            </div>
+            <div className="calculator-section">
+                <h2>Average Production Calculator</h2>
+                <AverageProductionCalculator />
             </div>
         </div>
     );
