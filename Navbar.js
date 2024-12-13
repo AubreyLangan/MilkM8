@@ -18,7 +18,7 @@ const Navbar = ({ toggleTheme, theme }) => {
         </div>
 
         <button onClick={toggleTheme}>
-            {theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
+            {theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}
         </button>
         {!isHome && <BackButton />}
         <ul className="menu">
@@ -40,6 +40,11 @@ const Navbar = ({ toggleTheme, theme }) => {
             <li>
                 <NavLink to="/resources" className={({ isActive }) => (isActive ? "active" : "")}>
                     Resources
+                </NavLink>
+            </li>
+            <li>
+                <NavLink to="calculator" className={({ isActive }) => (isActive ? "active" : "")}>
+                    Calculator
                 </NavLink>
             </li>
         </ul>
