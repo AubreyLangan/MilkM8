@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './Calculator.css';
 
 const MilkStashCalculator = () => {
     const [stash, setStash] = useState("");
@@ -6,11 +7,14 @@ const MilkStashCalculator = () => {
     const [result, setResult] = useState(null);
 
     const calculateStashDuration = () => {
-        if (!stash || !dailyConsumption || dailyConsumption === "0") {
+        const stashValue = parseFloat(stash) || 0;
+        const consumptionValue = parseFloat(dailyConsumption) || 0;
+
+        if (!stashValue || !consumptionValue) {
             alert("Please enter valid numbers for both fields.");
             return;
         }
-        const days = (stash / dailyConsumption).toFixed(1);
+        const days = (stash / consumptionValue).toFixed(1);
         setResult(days);
     };
 
