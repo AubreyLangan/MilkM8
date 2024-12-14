@@ -1,0 +1,96 @@
+:root {
+    --bg-color: #f5f5f5;
+    --text-color: #333;
+    --primary-color: #0077cc;
+    --primary-color-dark: #005fa3;
+    --border-color: #ddd;
+    --input-bg-color: #fff;
+    --input-border-color: #ccc;
+    --input-text-color: #333;
+}
+
+.user-profile {
+    margin: 20px auto;
+    padding: auto;
+    max-width: 500px;
+    border: 1px solid var(--bg-color);
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.user-profile h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.user-profile label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.user-profile input,
+.user-profile select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid var(--input-border-color);
+    background-color: var(--input-bg-color);
+    color: var(--input-text-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.user-profile input:focus,
+.user-profile select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 3px rgba(0, 119, 204, 0.5);
+}
+
+.user-profile button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.user-profile button:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.user-profile form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.user-profile .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-profile .result {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #e6f7ff;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    color: var(--text-color);
+    text-align: center;
+}
