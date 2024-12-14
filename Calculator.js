@@ -10,7 +10,7 @@ const MilkStashCalculator = () => {
         const stashValue = parseFloat(stash) || 0;
         const consumptionValue = parseFloat(dailyConsumption) || 0;
 
-        if (!stashValue || !consumptionValue) {
+        if (stashValue <= 0 || !consumptionValue <= 0) {
             alert("Please enter valid numbers for both fields.");
             return;
         }
