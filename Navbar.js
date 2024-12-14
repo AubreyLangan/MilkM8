@@ -59,7 +59,7 @@ const Navbar = ({ toggleTheme, theme }) => {
                 </NavLink>
             </li>
             <li>
-                <NavLink to="/user-profile" className={({ isActive }) => (isActive ? "active" : "")}>
+                <NavLink to="/profile" className={({ isActive }) => (isActive ? "active" : "")}>
                     Profile
                 </NavLink>
             </li>
