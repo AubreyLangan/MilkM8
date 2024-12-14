@@ -28,10 +28,14 @@
 
 .menu {
     list-style: none;
-    display: flex;
+    display: none;
     gap: 1rem;
     margin-top: 1rem;
     transition: all 0.3s ease-in-out;
+}
+
+.menu.open {
+    display: block;
 }
 
 .menu li a {
