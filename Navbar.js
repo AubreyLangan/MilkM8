@@ -58,6 +58,11 @@ const Navbar = ({ toggleTheme, theme }) => {
                     Calculator
                 </NavLink>
             </li>
+            <li>
+                <NavLink to="/user-profile" className={({ isActive }) => (isActive ? "active" : "")}>
+                    Profile
+                </NavLink>
+            </li>
         </ul>
       </nav>
     );
