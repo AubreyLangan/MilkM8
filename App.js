@@ -11,49 +11,105 @@ import UserProfile from "./Components/UserProfile";
 import './App.css';
 
 const App = () => {
-  const [userProfile, setUserProfile] = useState(() => {
-    const savedProfile = localStorage.getItem("userProfile");
-    return savedProfile ? JSON.parse(savedProfile) : {};
+  const [userData, setUserData] = useState(() => {
+    try {
+      const savedData = localStorage.getItem("userData");
+      return savedData ? JSON.parse(savedData) : {
+        name: "Jane Doe",
+        babyName: "Baby Jane",
+        unit: "oz",
+        goal: "30",
+      };
+    } catch (error) {
+      console.error("Error parsing user data from localStorage", error);
+      return { name: "", babyName: "", unit: "", goal: "" };
+    }
   });
-  
-  const updateUserProfile = (profile) => {
-    setUserProfile(profile);
-    localStorage.setItem("userProfile", JSON.stringify(profile));
+
+  const handleUpdateUser = (updatedProfile) => {
+    setUserData(updatedProfile);
+    localStorage.setItem("userData", JSON.stringify(updatedProfile));
   };
 
-  const [entries, setEntries] = useState([]);
+  const [entries, setEntries] = useState(() => {
+    const savedEntries = localStorage.getItem("entries");
+    return savedEntries ? JSON.parse(savedEntries) : [];
+  });
 
-  const addEntry = (entry) => {
-    setEntries((prevEntries) => [...prevEntries, entry]);
+  const [setLoading] = useState(false);
+
+  const addEntry =  async (entry) => {
+    setLoading(true);
+    try {
+      const newEntries = [...entries, entry];
+      setEntries(newEntries);
+      localStorage.setItem("entries", JSON.stringify(newEntries));
+    } catch (error) {
+      console.error("Error adding entry:", error);
+    } finally {
+      setLoading(false);
+    }
+    const newEntries = [...entries, entry];
+    setEntries(newEntries);
+    localStorage.setItem("entries", JSON.stringify(newEntries));
   };
 
   const deleteEntry = (id) => {
-    setEntries((prevEntries) => prevEntries.filter((entry) => entry.id !== id));
-  }
-  
+    const filteredEntries = entries.filter((entry) => entry.id !== id);
+    setEntries(filteredEntries);
+    localStorage.setItem("entries", JSON.stringify(filteredEntries));
+  };
+
   const updateEntry = (updatedEntry) => {
-    setEntries((prevEntries) =>
-      prevEntries.map((entry) =>
-        entry.id === updatedEntry.id ? updatedEntry : entry
-      )
-    );
-  }; 
+    const updatedEntries = entries.map((entry) =>
+    entry.id === updatedEntry.id ? updatedEntry : entry
+  );
+  setEntries(updatedEntries);
+  localStorage.setItem("entries", JSON.stringify(updatedEntries));
+  };
 
   return (
-      <div className="app">
-        <Navbar />
-        <div className="content">
-          <Routes>
-            <Route path="/" element={<Home entries={entries} />} />
-            <Route path="/log-entry" element={<LogEntry addEntry={addEntry} entries={entries} deleteEntry={deleteEntry} updateEntry={updateEntry} />} />
-            <Route path="/stats" element={<Stats entries={entries} />} />
-            <Route path="log-entries" element={<LogEntries entries={entries} updateEntry={updateEntry}  setEntries={setEntries} />} />
-            <Route path="/resources" element={<Resources />} />
-            <Route path="/calculators" element={<CalculatorPage entries={entries}/> } />
-            <Route path="/profile" element={<UserProfile updateUser={updateUserProfile} userData={userProfile} />} />
-          </Routes>
-        </div>
+    <div className="app">
+      <Navbar />
+      <div className="content">
+        <Routes>
+          <Route path="/" element={<Home entries={entries} />} />
+          <Route
+            path="/log-entry"
+            element={
+              <LogEntry
+                addEntry={addEntry}
+                entries={entries}
+                deleteEntry={deleteEntry}
+                updateEntry={updateEntry}
+              />
+            }
+          />
+          <Route path="/stats" element={<Stats entries={entries} />} />
+          <Route 
+            path="/log-entries"
+            element={
+              <LogEntries
+                entries={entries}
+                updateEntry={updateEntry}
+                setEntries={setEntries}
+              />
+            }
+          />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/calculators" element={<CalculatorPage entries={entries}/>} />
+          <Route 
+            path="/profile"
+            element={
+              <UserProfile
+                updatedUser={handleUpdateUser}
+                userData={userData}
+              />
+            }
+          />
+        </Routes>
       </div>
+    </div>
   );
 };
 
