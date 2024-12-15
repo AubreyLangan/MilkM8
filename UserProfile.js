@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './UserProfile.css';
 
 const UserProfile = ({ updatedUser, userData }) => {
     const [name, setName] = useState(userData.name || "");
@@ -8,9 +9,14 @@ const UserProfile = ({ updatedUser, userData }) => {
 
     const handleSave = () => {
         const updatedProfile = { name, babyName, unit, goal };
-        updatedUser(updatedProfile);
-    };
 
+        if (typeof updatedUser === "function") {
+            updatedUser(updatedProfile);
+        } else {
+            console.error("updatedUser is not a function");
+        }
+    };
+  
     return (
         <div className="user-profile">
             <h2>User Profile</h2>
