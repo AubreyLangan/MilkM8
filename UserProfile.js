@@ -1,22 +1,34 @@
 import React, { useState } from "react";
 import './UserProfile.css';
 
-const UserProfile = ({ updatedUser, userData }) => {
+const UserProfile = ({
+    updatedUser = () => console.warn("No updatedUser function provided"),
+    userData = {
+        name: "",
+        babyName: "",
+        unit: "oz",
+        goal: "",
+    },
+}) => {
     const [name, setName] = useState(userData.name || "");
     const [babyName, setBabyName] = useState(userData.babyName || "");
     const [unit, setUnit] = useState(userData.unit || "oz");
     const [goal, setGoal] = useState(userData.goal || "");
+    const [feedback, setFeedback] = useState("");
 
     const handleSave = () => {
         const updatedProfile = { name, babyName, unit, goal };
 
         if (typeof updatedUser === "function") {
             updatedUser(updatedProfile);
+            setFeedback("Profile updated successfully!");
+            setTimeout(() => setFeedback(""), 3000);
         } else {
             console.error("updatedUser is not a function");
+            setFeedback("Failed to save profile.");
         }
     };
-  
+    
     return (
         <div className="user-profile">
             <h2>User Profile</h2>
@@ -59,6 +71,7 @@ const UserProfile = ({ updatedUser, userData }) => {
                     Save Profile
                 </button>
             </form>
+            {feedback && <p className="feedback-message">{feedback}</p>}
         </div>
     );
 };
