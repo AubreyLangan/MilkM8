@@ -27,8 +27,12 @@ const App = () => {
   });
 
   const handleUpdateUser = (updatedProfile) => {
-    setUserData(updatedProfile);
-    localStorage.setItem("userData", JSON.stringify(updatedProfile));
+    if (typeof updatedProfile === "object" && updatedProfile !== null) {
+      setUserData(updatedProfile);
+      localStorage.setItem("userData", JSON.stringify(updatedProfile));
+    } else {
+      console.error("Invalid user profile update:", updatedProfile);
+    }
   };
 
   const [entries, setEntries] = useState(() => {
