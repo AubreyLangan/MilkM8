@@ -1,15 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import TipsGenerator from "../Components/TipsGenerator";
-import MilkStashCalculator from "../Components/Calculator";
+import MilkStashCalculator from "../Components/Calculators/Calculator";
+import { useTheme } from "../utils/ThemeContext";
 
 const Home = ({ entries = [] }) => {
+    const { isDarkMode } = useTheme();
     const navigate = useNavigate();
     const totalMilk = entries.reduce((total, entry) => total + Number(entry.quantity || 0), 0);
     const lastEntry = entries[entries.length - 1] || {};
 
     return (
-        <div className="home">
+        <div className={`home ${isDarkMode ? "dark" : "light"}`}>
             <h1>Welcome to MilkM8</h1>
             <p>Your trusted companion for tracking pumping sessions.</p>
 
@@ -35,7 +37,6 @@ const Home = ({ entries = [] }) => {
             </ul>
 
             <div>
-                <h2>Milk Stash Calculator</h2>
                 <MilkStashCalculator />
             </div>
 
