@@ -3,8 +3,11 @@ import LogEntryForm from '../Components/LogEntryForm';
 import EditEntryForm from "../Components/EditEntryForm";
 import Timer from "../Components/Timer";
 import ClockTimer from "../Components/ClockTimer";
+import { useTheme } from "../utils/ThemeContext";
+
 
 const LogEntry = ({ addEntry, entries = [], deleteEntry, updateEntry }) => {
+    const { isDarkMode } = useTheme();
     const [editingEntry, setEditingEntry] = useState(null);
     const [showClock, setShowClock] = useState(false);
 
@@ -35,8 +38,9 @@ const LogEntry = ({ addEntry, entries = [], deleteEntry, updateEntry }) => {
         addEntry(entry);
     };
 
+
     return (
-        <div>
+        <div className={`log-entry ${isDarkMode ? "dark" : "light"}`}>
             <h1>Log Your Milk</h1>
 
             <button onClick={() => setShowClock(!showClock)}>
