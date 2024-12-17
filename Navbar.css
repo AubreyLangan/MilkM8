@@ -5,6 +5,7 @@
     padding: 10px 20px;
     background-color: #f8f9fa;
     border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease color 0.3 ease;
 }
 
 .navabr-container {
@@ -62,5 +63,15 @@
 
 .menu li .active {
     font-weight: bold;
-    color: #007bff;
+    color: var(--accent-color);
+}
+
+.navbar.light {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.nabar.dark {
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
