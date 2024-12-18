@@ -1,0 +1,10 @@
+:root {
+  --background-light: #ffffff;
+  --text-light: #000000;
+  --background-dark: #121212;
+  --text-dark: #ffffff;
+  --accent-color: #3b82f6;
+  --accent-hover: #2563eb;
+  --delete-hover: #ef4444;
+  --edit-hover: #22c55e;
+}
