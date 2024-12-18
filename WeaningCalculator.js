@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './WeaningCalculator.css';
 
 const WeaningCalculator = () => {
     const [currentSupply, setCurrentSupply] = useState("");
