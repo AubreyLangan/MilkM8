@@ -1,7 +1,9 @@
 import React from "react";
 import './Resources.css';
+import { useTheme } from "../utils/ThemeContext";
 
 const Resources = () => {
+    const { isDarkMode } = useTheme();
     const resources = [
         { title: "La Leche League International", url: "https://www.llli.org/", description: "A global nonprofit dedicated to providing breastfeeding support and resources." },
         { title: "KellyMom", url: "https://kellymom.com/", description: "Evidence-based information on breastfeeding and parenting." },
@@ -10,7 +12,7 @@ const Resources = () => {
     ];
 
 return (
-    <div className="resources">
+    <div className={`resources ${isDarkMode ? "dark" : "light"}`}>
         <h1>Breastfeeding and Pumping Resources</h1>
         <p>Here are some trusted resources to help you on your breastfeeding and pumping journey:</p>
         <ul>
