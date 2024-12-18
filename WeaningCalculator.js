@@ -65,7 +65,22 @@ const WeaningCalculator = () => {
                     </label>
                     <button type="submit">Calculate</button>
                 </form>
+
+                {schedule.length > 0 && (
+                    <div className="schedule">
+                        <h2>Weaning Schedule</h2>
+                        <ul>
+                            {schedule.map((entry) => (
+                                <li key={entry.day}>
+                                    Day {entry.day}: {entry.amount} Oz
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
             </div>
-        )
-    }
-}
+        );
+    };
+};
+
+export default WeaningCalculator;
