@@ -1,18 +1,14 @@
 :root {
-    --background-color: #ffffff;
-    --text-color: #000000;
-    --primary-color: #007bff;
-    --secondary-color: #0056b3;
-    --accent-color: #80bdff;
+    --background-light: #ffffff;
+    --text-light: #000000;
+    --background-dark: #121212;
+    --text-dark: #ffffff;
+    --accent-color: #3b82f6;
+    --accent-hover: #2563eb;
+    --delete-hover: #ef4444;
+    --edit-hover: #22c55e;
 }
-  
-[data-theme="dark"] {
-    --background-color: #1e293b;
-    --text-color: #ffffff;
-    --primary-color: #3b82f6;
-    --secondary-color: #2563eb;
-    --accent-color: #60a5fa;
-}
+
 
 .log-entry {
     padding: 20px;
@@ -21,16 +17,45 @@
 }
 
 .log-entry.light {
-    background-color: var(--background-color);
-    color: var(--text-color);
+    background-color: var(--background-light);
+    color: var(--text-light);
 }
 
 .log-entry.dark {
-    background-color: var(--background-color);
-    color: var(--text-color);
+    background-color: var(--background-dark);
+    color: var(--text-dark);
 }
 
 .theme-toggle-button {
     background-color: var(--accent-color);
-    
+    color: var(--text-light);
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle-button:hover {
+    background-color: var(--accent-hover);
+}
+
+.delete-button, .edit-button {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: var(--delete-hover);
+}
+
+.edit-button:hover {
+    background-color: var(--edit-hover);
 }
