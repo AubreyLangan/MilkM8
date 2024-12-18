@@ -4,10 +4,13 @@ import DepletionCalculator from "../Components/Calculators/DepletionCalculator";
 import TargetGoalCalculator from "../Components/Calculators/TargetGoalCalculator";
 import EventMilkCalculator from "../Components/Calculators/EventMilkCalculator";
 import AverageProductionCalculator from "../Components/Calculators/AverageProductionCalculator";
+import "./CalculatorPage.css";
+import { useTheme } from "../utils/ThemeContext";
 
 const CalculatorPage = () => {
+    const { isDarkMode } = useTheme();
     return (
-        <div className="calculator-page">
+        <div className={`calculator-page ${isDarkMode ? "dark" : "light"}`}>
             <h1>Milk Calculators</h1>
             <div className="calculator-section">
                 <h2>Days until Depletion</h2>
