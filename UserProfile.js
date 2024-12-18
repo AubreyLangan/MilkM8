@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTheme } from "../utils/ThemeContext";
 import './UserProfile.css';
 
 const UserProfile = ({
@@ -15,6 +16,7 @@ const UserProfile = ({
     const [unit, setUnit] = useState(userData.unit || "oz");
     const [goal, setGoal] = useState(userData.goal || "");
     const [feedback, setFeedback] = useState("");
+    const { isDarkMode } = useTheme();
 
     const handleSave = () => {
         const updatedProfile = { name, babyName, unit, goal };
@@ -30,7 +32,7 @@ const UserProfile = ({
     };
     
     return (
-        <div className="user-profile">
+        <div className={`user-profile ${isDarkMode ? "dark" : "light"}`}>
             <h2>User Profile</h2>
             <form onSubmit={(e) => e.preventDefault()}>
                 <label>
