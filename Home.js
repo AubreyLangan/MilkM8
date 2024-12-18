@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import TipsGenerator from "../Components/TipsGenerator";
-import MilkStashCalculator from "../Components/Calculators/Calculator";
 import { useTheme } from "../utils/ThemeContext";
 
 const Home = ({ entries = [] }) => {
@@ -35,10 +34,6 @@ const Home = ({ entries = [] }) => {
                     </li>
                 ))}
             </ul>
-
-            <div>
-                <MilkStashCalculator />
-            </div>
 
             <div className="tips">
                 <TipsGenerator />
