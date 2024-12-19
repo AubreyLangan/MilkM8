@@ -67,8 +67,21 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
                         placeholder="Optional notes..."
                     />
                 </label>
-                <button type=""
+                <button type="submit">Add Feed</button>
             </form>
+
+            <h3>Feeding Log</h3>
+            <ul>
+                {entries.map((entry) => (
+                    <li key={entry.id}>
+                        <strong>{entry.date} {entry.time}</strong> - {entry.amount} Oz
+                        <br />
+                        <em>{entry.notes || "No notes"}</em>
+                    </li>
+                ))}
+            </ul>
         </div>
-    )
-}
+    );
+};
+
+export default FeedTracker;
