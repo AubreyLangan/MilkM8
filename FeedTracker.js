@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './FeedTracker.css'; 
 
 const FeedTracker = ({ addEntry, entries = [] }) => {
     const [date, setDate] = useState("");
@@ -26,7 +27,7 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
         setDate("");
         setTime("");
         setAmount("");
-        setNotes*("");
+        setNotes("");
     };
 
     return (
