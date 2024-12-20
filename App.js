@@ -9,7 +9,8 @@ import Resources from "./Components/Resources";
 import CalculatorPage from "./Pages/CalculatorPage";
 import UserProfile from "./Components/UserProfile";
 import { useTheme } from "./utils/ThemeContext";
-import { getFromLocalStorage, saveToLocalStorage } from '/utils/localStorage';
+import { getFromLocalStorage, saveToLocalStorage } from "./utils/localStorage";
+import FeedTracker from "./Components/FeedTracker";
 import './App.css';
 
 const App = () => {
@@ -111,6 +112,19 @@ return (
             <UserProfile
               updatedUser={handleUpdateUser}
               userData={userData}
+            />
+          }
+        />
+        <Route 
+          path="/feed-tracker" 
+          element={
+            <FeedTracker
+              entries={entries}
+              addEntry={(entry) => {
+                const updatedEntries = [...entries, entry];
+                setEntries(updatedEntries);
+                localStorage.setItem("entries", JSON.stringify(updatedEntries));
+              }}
             />
           }
         />
