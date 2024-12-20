@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import './FeedTracker.css'; 
+import { useTheme } from "../utils/ThemeContext";
 
 const FeedTracker = ({ addEntry, entries = [] }) => {
+    const { isDarkMode } = useTheme();
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
     const [amount, setAmount] = useState("");
@@ -31,7 +33,7 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
     };
 
     return (
-        <div className="feed-tracker">
+        <div className={`feed-tracker ${isDarkMode ? "dark" : "light"}`}>
             <h2>Feed Tracker</h2>
             <form onSubmit={handleSubmit}>
                 <label>
