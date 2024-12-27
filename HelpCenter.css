@@ -39,3 +39,15 @@
     margin-top: 0;
 }
 
+.faq-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.faq-content li {
+    margin-bottom: 15px;
+}
+
+.faq-content strong {
+    font-size: 1.1em;
+}
