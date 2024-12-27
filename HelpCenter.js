@@ -12,8 +12,16 @@ const faqs = [
     {
         category: "Tracking Features",
         questions: [
-
-        ]
+            { q: "How do I log feeding sessions?", a: "Go to the 'Feeding Tracker' page and fill in the form with the details of your feeding session." },
+            { q: "Can I track pumping sessions?", a: "Yes! Use the Pumping Tracker in the Log Entry section." }
+        ],
+    },
+    {
+        category: "Technical Help",
+        questions: [
+            { q: "How do I enable dark mode?", a: "Go to Settings and toggle the Dark Mode Switch." },
+            { q: "Why is my data not syncing?", a: "Ensure you are logged in and have an active internet connection." },
+        ],
     }
 ];
 
@@ -39,11 +47,18 @@ const HelpCenter = () => {
                     <>
                         <h2>{faqs[activeCategory].category}</h2>
                         <ul>
-                            
+                            {faqs[activeCategory].questions.map((item, idx) => (
+                                <li key={idx}>
+                                    <strong>{item.q}</strong>
+                                    <p>{item.a}</p>
+                                </li>
+                            ))}  
                         </ul>
                     </>
                 )}
             </div>
         </div>
-    )
-}
+    );
+};
+
+export default HelpCenter;
