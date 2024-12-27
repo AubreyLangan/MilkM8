@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './HelpCenter.css';
-
+import { useTheme } from "../utils/ThemeContext";
 
 const faqs = [
     {
@@ -15,7 +15,7 @@ const faqs = [
         questions: [
             { q: "How do I log feeding sessions?", a: "Go to the 'Feeding Tracker' page and fill in the form with the details of your feeding session." },
             { q: "Can I track pumping sessions?", a: "Yes! Use the Pumping Tracker in the Log Entry section." }
-        ],
+        ], 
     },
     {
         category: "Technical Help",
@@ -28,9 +28,10 @@ const faqs = [
 
 const HelpCenter = () => {
     const [activeCategory, setActiveCategory] = useState(null);
+    const { isDarkMode } = useTheme();
 
     return (
-        <div className="help-center">
+        <div className={`help-center ${isDarkMode ? "dark" : "light"}`}>
             <h1>Help Center</h1>
             <div className="faq-categories">
                 {faqs.map((faq, index) => (
