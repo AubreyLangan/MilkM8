@@ -12,6 +12,7 @@ import { useTheme } from "./utils/ThemeContext";
 import { getFromLocalStorage, saveToLocalStorage } from "./utils/localStorage";
 import FeedTracker from "./Components/FeedTracker";
 import './App.css';
+import HelpCenter from "./Components/HelpCenter";
 
 const App = () => {
   const { isDarkMode, toggleTheme } = useTheme();
@@ -127,6 +128,10 @@ return (
               }}
             />
           }
+        />
+        <Route
+          path="/help-center"
+          element={ <HelpCenter /> }
         />
       </Routes>
     </div>

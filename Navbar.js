@@ -71,6 +71,11 @@ const Navbar = () => {
                     Feed Tracker
                 </NavLink>
             </li>
+            <li>
+                <NavLink to="/help-center" className={({ isActive }) => (isActive ? "active" : "")}>
+                    Help Center
+                </NavLink>
+            </li>
         </ul>
       </nav>
     );
