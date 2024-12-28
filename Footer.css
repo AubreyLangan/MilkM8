@@ -1,0 +1,55 @@
+.app-footer {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.footer-section {
+    max-width: 300px;
+}
+
+.footer-section h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-section ul li a {
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-media a {
+    margin-right: 10px;
+}
+
+.social-media a:hover {
+    color: var(--accent-hover);
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 0.9em;
+    border-top: 1px solid var(--accent-color);
+    padding-top: 10px;
+}
