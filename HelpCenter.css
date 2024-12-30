@@ -51,3 +51,14 @@
 .faq-content strong {
     font-size: 1.1em;
 }
+
+.no-results {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.2em;
+    color: var(--text-light, #000);
+}
+
+.help-center.dark .no-results {
+    color: var(--text-dark, #fff);
+}
