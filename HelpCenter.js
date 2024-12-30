@@ -32,44 +32,61 @@ const HelpCenter = () => {
         }
     ];
 
-    const filteredFaqs = faqs.map((category) => ({
-        ...category,
-        questions: category.questions.filter((item) => 
-        item.q.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.a.toLowerCase().includes(searchTerm.toLowerCase())
-    ),
-    })).filter((category) => category.questions.length > 0);
+    const filteredFaqs = faqs
+        .map((category) => ({
+            ...category,
+            questions: category.questions.filter(
+                (item) =>
+                    item.q.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    item.a.toLowerCase().includes(searchTerm.toLowerCase())
+            ),
+        }))
+        .filter((category) => category.questions.length > 0);
+
+    if (activeCategory !== null && activeCategory >= filteredFaqs.length) {
+        setActiveCategory(null);
+    }
 
     return (
         <div className={`help-center ${isDarkMode ? "dark" : "light"}`}>
             <h1>Help Center</h1>
-            <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder="Search FAQs..." />
-            <div className="faq-categories">
-                {filteredFaqs.map((faq, index) => (
-                    <div 
-                        key={index}
-                        className={`category ${activeCategory(activeCategory === index ? "active" : "")}`}
-                        onClick={() => setActiveCategory(activeCategory === index ? null : index)}
-                    >
-                        {faq.category}
+            <SearchBar 
+                searchTerm={searchTerm} 
+                setSearchTerm={setSearchTerm} 
+                placeholder="Search FAQs..." 
+            />
+            {filteredFaqs.length === 0 ? (
+                <p className="no-results">No results found. Try another search term.</p>
+            ) : (
+                <>
+                    <div className="faq-categories">
+                        {filteredFaqs.map((faq, index) => (
+                            <div 
+                                key={index}
+                                className={`category ${activeCategory === index ? "active" : ""}`}
+                                onClick={() => setActiveCategory(activeCategory === index ? null : index)}
+                            >
+                                {faq.category}
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
-            <div className="faq-content">
-                {activeCategory !== null && (
-                    <>
-                        <h2>{filteredFaqs[activeCategory].category}</h2>
-                        <ul>
-                            {filteredFaqs[activeCategory].questions.map((item, idx) => (
-                                <li key={idx}>
-                                    <strong>{item.q}</strong>
-                                    <p>{item.a}</p>
-                                </li>
-                            ))}
-                        </ul>
-                    </>
-                )}
-            </div>
+                    <div className="faq-content">
+                        {activeCategory !== null && (
+                            <>
+                                <h2>{filteredFaqs[activeCategory].category}</h2>
+                                <ul>
+                                    {filteredFaqs[activeCategory].questions.map((item, idx) => (
+                                        <li key={idx}>
+                                            <strong>{item.q}</strong>
+                                            <p>{item.a}</p>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </>
+                        )}
+                    </div>
+                </>
+            )}
         </div>
     );
 };
