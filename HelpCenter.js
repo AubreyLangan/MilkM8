@@ -14,13 +14,19 @@ const HelpCenter = () => {
             questions: [
                 { q: "What is this app for?", a: "This app helps you track and manage feeding, pumping, and baby care routines." },
                 { q: "How to get started?", a: "Create an account, set up your profile, and start logging entries!" },
+                { q: "Is this app free to use?", a: "Yes, the core features are free. However, premium features may require a subscription." },
+                { q: "Can I use this app offline?", a: "The app requires an interne connection for syncing, but you can log entries offline and sync them later." },
+                { q: "What platforms does the app support?", a: "The app is available on iOS, Android, and web browsers." }
             ],
         },
         {
             category: "Tracking Features",
             questions: [
                 { q: "How do I log feeding sessions?", a: "Go to the 'Feeding Tracker' page and fill in the form with the details of your feeding session." },
-                { q: "Can I track pumping sessions?", a: "Yes! Use the Pumping Tracker in the Log Entry section." }
+                { q: "Can I track pumping sessions?", a: "Yes! Use the Pumping Tracker in the Log Entry section." },
+                { q: "How do I edit a previous entry?", a: "Navigate to the entry in your log and click the 'Edit' button to update the details." },
+                { q: "Can I track more than one baby?", a: "Yes! You can add multiple profiles for each baby in your family." },
+                { q: "Can I export my data?", a: "Yes, go to Settings and use the 'Export Data' feature to download your logs." }
             ], 
         },
         {
