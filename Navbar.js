@@ -76,6 +76,11 @@ const Navbar = () => {
                     Help Center
                 </NavLink>
             </li>
+            <li>
+                <NavLink to="/feedback-form" className={({ isActive }) => (isActive ? "active" : "")}>
+                    Feedback
+                </NavLink>
+            </li>
         </ul>
       </nav>
     );
