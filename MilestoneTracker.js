@@ -24,6 +24,37 @@ const MilestoneTracker = () => {
 
     return (
         <div className="milestone-tracker">
+            <h1>Milestone Tracker</h1>
+            <div className="add-milestone">
+                <input
+                    type="text"
+                    name="title"
+                    value={newMilestone.title}
+                    onChange={handleInputChange}
+                    placeholder="Milestone Title"
+                />
+                <textarea
+                    name="description"
+                    value={newMilestone.description}
+                    onChange={handleInputChange}
+                    placeholder="Description (optional)"
+                />
+                <input
+                    type="date"
+                    name="date"
+                    value={newMilestone.date}
+                    onChange={handleInputChange}
+                />
+                <input
+                    type="text"
+                    name="tag"
+                    value={newMilestone.tag}
+                    onChange={handleInputChange}
+                    placeholder="Tag (optional)"
+                />
+                <button onClick={addMilestone}>Add Milestone</button>
+            </div>
+
             
         </div>
     )
