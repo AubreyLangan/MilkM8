@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Routes, Route } from 'react-router-dom';
 import Navbar from "./Components/Navbar";
 import Home from './Pages/Home';
+import AboutPage from "./Pages/AboutPage";
 import LogEntry from './Pages/LogEntry';
 import Stats from './Pages/Stats';
 import LogEntries from "./Components/LogEntries";
@@ -13,6 +14,8 @@ import { getFromLocalStorage, saveToLocalStorage } from "./utils/localStorage";
 import FeedTracker from "./Components/FeedTracker";
 import './App.css';
 import HelpCenter from "./Components/HelpCenter";
+import Footer from "./Components/Footer";
+import SettingsPage from "./Pages/SettingsPage";
 
 const App = () => {
   const { isDarkMode, toggleTheme } = useTheme();
@@ -80,6 +83,7 @@ return (
     <div className="content">
       <Routes>
         <Route path="/" element={<Home entries={entries} />} />
+        <Route path="/about-page" element={<AboutPage />} />
         <Route
           path="/log-entry"
           element={
@@ -129,11 +133,13 @@ return (
             />
           }
         />
+        <Route path="/settings-page" element={<SettingsPage />} />
         <Route
           path="/help-center"
           element={ <HelpCenter /> }
         />
       </Routes>
+      <Footer />
     </div>
   </div>
 );
