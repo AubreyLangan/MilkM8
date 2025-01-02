@@ -55,7 +55,25 @@ const MilestoneTracker = () => {
                 <button onClick={addMilestone}>Add Milestone</button>
             </div>
 
-            
+            <div className="milestone-list">
+                {milestones.length === 0 ? (
+                    <p>No milestones yet. Start by adding one!</p>
+                ) : (
+                    milestones.map((milestone) => (
+                        <div key={milestone.id} className="milestone">
+                            <h3>{milestone.title}</h3>
+                            <p>{milestone.description}</p>
+                            <p>
+                                <strong>Date:</strong> {milestone.date}
+                            </p>
+                            {milestone.tag && <p><strong>Tag:</strong> {milestone.tag} </p>}
+                            <button onClick={() => deleteMilestone(milestone.id)}>Delete</button>
+                        </div>
+                    ))
+                )}
+            </div>
         </div>
-    )
-}
+    );
+};
+
+export default MilestoneTracker;
