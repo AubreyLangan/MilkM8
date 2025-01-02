@@ -16,6 +16,7 @@ import './App.css';
 import HelpCenter from "./Components/HelpCenter";
 import Footer from "./Components/Footer";
 import SettingsPage from "./Pages/SettingsPage";
+import MilestoneTracker from "./Components/MilestoneTracker";
 
 const App = () => {
   const { isDarkMode, toggleTheme } = useTheme();
@@ -106,6 +107,7 @@ return (
             />
           }
         />
+        <Route path="/milestone-tracker" element={<MilestoneTracker />} />
         <Route path="/resources" element={<Resources />} />
         <Route
           path="/calculators"
