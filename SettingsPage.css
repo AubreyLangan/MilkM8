@@ -1,0 +1,59 @@
+.settings-page {
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.settings-page h1 {
+    text-align: center;
+    color: var(--accent-color);
+}
+
+.settings-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: var(--background-light);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.settings-section h2 {
+    color: var(--accent-color);
+}
+
+.settings-section form label,
+.settings-section .toggle label {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.settings-section form input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.settings-section button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: var(--accent-color);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.settings-section button:hover {
+    background: var(--accent-hover);
+}
+
+.delete-account {
+    background: var(--delete-hover);
+}
+
+.delete-account:hover {
+    background: #b91c1c;
+}
