@@ -77,6 +77,11 @@ const Navbar = () => {
                 </NavLink>
             </li>
             <li>
+                <NavLink to="/settings-page" className={({ isActive }) => (isActive ? "active" : "")}>
+                    Settings
+                </NavLink>
+            </li>
+            <li>
                 <NavLink to="/help-center" className={({ isActive }) => (isActive ? "active" : "")}>
                     Help Center
                 </NavLink>
