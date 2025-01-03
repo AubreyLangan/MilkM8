@@ -77,6 +77,11 @@ const Navbar = () => {
                 </NavLink>
             </li>
             <li>
+                <NavLink to="/milestone-tracker" className={({ isActive }) => (isActive ? "active" : "")}>
+                    Milestone Tracker
+                </NavLink>
+            </li>
+            <li>
                 <NavLink to="/settings-page" className={({ isActive }) => (isActive ? "active" : "")}>
                     Settings
                 </NavLink>
