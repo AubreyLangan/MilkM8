@@ -1,0 +1,58 @@
+.milestone-tracker {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.add-milestone {
+    margin-bottom: 20px;
+}
+
+.add-milestone input,
+.add-milestone textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add-milestone button {
+    padding: 10px 15px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-milestone button:hover {
+    background-color: var(--accent-hover);
+}
+
+.milestone-list {
+    margin-top: 20px;
+}
+
+.milestone {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: var(--background-light);
+    color: var(--text-light);
+}
+
+.milestone button {
+    background-color: var(--delete-hover);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.milestone button:hover {
+    opacity: 0.9;
+}
