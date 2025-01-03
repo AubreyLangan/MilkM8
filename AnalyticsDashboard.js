@@ -59,7 +59,16 @@ const AnalyticsDashboard = ({ logs }) => {
                 </div>
             </div>
 
-            
+            <div className="recent-activity">
+                <h2>Recent Activity</h2>
+                <ul>
+                    <li>Milestone: First words logged on 2024-12-01</li>
+                    <li>Feeding Session: 30 mins on 2024-12-02</li>
+                    <li>Pumping Session: 4 oz on 2024-12-03</li>
+                </ul>
+            </div>
         </div>
-    )
-}
+    );
+};
+
+export default AnalyticsDashboard;
