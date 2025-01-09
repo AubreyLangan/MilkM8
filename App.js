@@ -18,6 +18,7 @@ import Footer from "./Components/Footer";
 import SettingsPage from "./Pages/SettingsPage";
 import MilestoneTracker from "./Components/MilestoneTracker";
 import AnalyticsDashboard from "./Components/AnalyticsDashboard";
+import { FeedDataProvider } from "./Contexts/FeedDataContext";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -40,6 +41,7 @@ ChartJS.register(
   Legend,
   ArcElement
 );
+
 
 
 const App = () => {
@@ -97,78 +99,80 @@ const updateEntry = (updatedEntry) => {
 };
 
 return (
-  <div className={`app ${isDarkMode ? "Dark" : "Light"}`}>
-    <header>
-      <button onClick={toggleTheme}>
-        Switch to {!isDarkMode ? "Dark" : "Light"} Mode
-      </button>
-    </header>
-    <Navbar />
-    {loading && <div className="loading-spinner">Loading...</div>}
-    <div className="content">
-      <Routes>
-        <Route path="/" element={<Home entries={entries} />} />
-        <Route path="/about-page" element={<AboutPage />} />
-        <Route path="/analytics-dashboard" element={<AnalyticsDashboard />} /> 
-        <Route
-          path="/log-entry"
-          element={
-            <LogEntry
-              addEntry={addEntry}
-              entries={entries}
-              deleteEntry={deleteEntry}
-              updateEntry={updateEntry}
-            />
-          }
-        />
-        <Route path="/stats" element={<Stats entries={entries} />} />
-        <Route 
-          path="/log-entries"
-          element={
-            <LogEntries
-              entries={entries}
-              updateEntry={updateEntry}
-              setEntries={setEntries}
-            />
-          }
-        />
-        <Route path="/milestone-tracker" element={<MilestoneTracker />} />
-        <Route path="/resources" element={<Resources />} />
-        <Route
-          path="/calculators"
-          element={<CalculatorPage entries={entries}/> } 
-        />
-        <Route 
-          path="/profile"
-          element={
-            <UserProfile
-              updatedUser={handleUpdateUser}
-              userData={userData}
-            />
-          }
-        />
-        <Route 
-          path="/feed-tracker" 
-          element={
-            <FeedTracker
-              entries={entries}
-              addEntry={(entry) => {
-                const updatedEntries = [...entries, entry];
-                setEntries(updatedEntries);
-                localStorage.setItem("entries", JSON.stringify(updatedEntries));
-              }}
-            />
-          }
-        />
-        <Route path="/settings-page" element={<SettingsPage />} />
-        <Route
-          path="/help-center"
-          element={ <HelpCenter /> }
-        />
-      </Routes>
-      <Footer />
+  <FeedDataProvider>
+    <div className={`app ${isDarkMode ? "Dark" : "Light"}`}>
+      <header>
+        <button onClick={toggleTheme}>
+          Switch to {!isDarkMode ? "Dark" : "Light"} Mode
+        </button>
+      </header>
+      <Navbar />
+      {loading && <div className="loading-spinner">Loading...</div>}
+      <div className="content">
+        <Routes>
+          <Route path="/" element={<Home entries={entries} />} />
+          <Route path="/about-page" element={<AboutPage />} />
+          <Route path="/analytics-dashboard" element={<AnalyticsDashboard />} /> 
+          <Route
+            path="/log-entry"
+            element={
+              <LogEntry
+                addEntry={addEntry}
+                entries={entries}
+                deleteEntry={deleteEntry}
+                updateEntry={updateEntry}
+              />
+            }
+          />
+          <Route path="/stats" element={<Stats entries={entries} />} />
+          <Route 
+            path="/log-entries"
+            element={
+              <LogEntries
+                entries={entries}
+                updateEntry={updateEntry}
+                setEntries={setEntries}
+              />
+            }
+          />
+          <Route path="/milestone-tracker" element={<MilestoneTracker />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route
+            path="/calculators"
+            element={<CalculatorPage entries={entries}/> } 
+          />
+          <Route 
+            path="/profile"
+            element={
+              <UserProfile
+                updatedUser={handleUpdateUser}
+                userData={userData}
+              />
+            }
+          />
+          <Route 
+            path="/feed-tracker" 
+            element={
+              <FeedTracker
+                entries={entries}
+                addEntry={(entry) => {
+                  const updatedEntries = [...entries, entry];
+                  setEntries(updatedEntries);
+                  localStorage.setItem("entries", JSON.stringify(updatedEntries));
+                }}
+              />
+            }
+          />
+          <Route path="/settings-page" element={<SettingsPage />} />
+          <Route
+            path="/help-center"
+            element={ <HelpCenter /> }
+          />
+        </Routes>
+        <Footer />
+      </div>
     </div>
-  </div>
+  </FeedDataProvider>
 );
 };
 
