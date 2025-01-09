@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Line, Pie } from "react-chartjs-2";
+import './AnalyticsDashboard.css';
 
 const AnalyticsDashboard = ({ logs }) => {
     const [dateRange, setDateRange] = useState("last7days");
@@ -31,9 +32,8 @@ const AnalyticsDashboard = ({ logs }) => {
     const handleDateRangeChange = (range) => {
         setDateRange(range);
         if (range === "custom") {
-
+            setCustomDate({ start: "", end: "" });
         }  
-
     };
 
     return (
@@ -41,16 +41,25 @@ const AnalyticsDashboard = ({ logs }) => {
             <h1>Analytics Dashboard</h1>
 
             <div className="date-filters">
-                <button onClick={() => handleDateRangeChange("last7days")}>
+                <button
+                    className={`filter-button ${dateRange === "last7days" ? "active" : ""}`}
+                    onClick={() => handleDateRangeChange("last7days")}
+                >
                     Last 7 Days
                 </button>
-                <button onClick={() => handleDateRangeChange("last30days")}>
+                <button
+                    className={`filter-button ${dateRange === "last30days" ? "active" : ""}`}
+                    onClick={() => handleDateRangeChange("last30days")}
+                >
                     Last 30 Days
                 </button>
-                <button onClick={() => handleDateRangeChange("custon")}>
+                <button
+                    className={`filter-button ${dateRange === "custom" ? "active" : ""}`}
+                    onClick={() => handleDateRangeChange("custom")}
+                >
                     Custom
                 </button>
-            </div>
+        </div>
 
             {dateRange === "custom" && (
                 <div className="custom-date-range">
@@ -77,13 +86,13 @@ const AnalyticsDashboard = ({ logs }) => {
                 </div>
             )}
 
-            <div className="charts">
-                <div className="line-chart">
-                    <h2>Feeding Trends</h2>
+            <div className="chart-container">
+                <div className="chart">
+                    <h2>Session Breakdown</h2>
                     <Line data={lineChartData} />
                 </div>
-                <div className="pie-chart">
-                    <h2>Session Distribution</h2>
+                <div className="chart">
+                    <h2>Session Breakdown</h2>
                     <Pie data={pieChartData} />
                 </div>
             </div>
