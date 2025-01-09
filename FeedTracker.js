@@ -8,6 +8,7 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
     const [time, setTime] = useState("");
     const [amount, setAmount] = useState("");
     const [notes, setNotes] = useState("");
+    const [alertMessage, setAlertMessage] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -26,6 +27,12 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
         };
 
         addEntry(newEntry);
+        setAlertMessage("Your feed session has been logged successfully!");
+
+        setTimeout(() => {
+            setAlertMessage("");
+        }, 3000);
+
         setDate("");
         setTime("");
         setAmount("");
@@ -35,6 +42,13 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
     return (
         <div className={`feed-tracker ${isDarkMode ? "dark" : "light"}`}>
             <h2>Feed Tracker</h2>
+
+            {alertMessage && (
+                <div className="alert alert-success">
+                    {alertMessage}
+                </div>
+            )}
+
             <form onSubmit={handleSubmit}>
                 <label>
                     Date:
