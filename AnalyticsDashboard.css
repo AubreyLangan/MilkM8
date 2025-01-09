@@ -41,3 +41,72 @@
     background-color: #e0f7fa;
 }
 
+.custom-date-range {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.custom-date-range label {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.chart-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.chart {
+    flex: 1;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.summary-metrics {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.metric {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.metric h2 {
+    font-size: 16px;
+    color: #333;
+}
+
+.metric p {
+    font-size: 24px;
+    color: #36a2eb;
+}
+
+.recent-activity {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.recent-activity ul {
+    list-style: none;
+    padding: 0;
+}
+
+.recent-activity li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+}
