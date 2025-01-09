@@ -17,6 +17,30 @@ import HelpCenter from "./Components/HelpCenter";
 import Footer from "./Components/Footer";
 import SettingsPage from "./Pages/SettingsPage";
 import MilestoneTracker from "./Components/MilestoneTracker";
+import AnalyticsDashboard from "./Components/AnalyticsDashboard";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+} from "chart.js";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement
+);
+
 
 const App = () => {
   const { isDarkMode, toggleTheme } = useTheme();
@@ -85,6 +109,7 @@ return (
       <Routes>
         <Route path="/" element={<Home entries={entries} />} />
         <Route path="/about-page" element={<AboutPage />} />
+        <Route path="/analytics-dashboard" element={<AnalyticsDashboard />} /> 
         <Route
           path="/log-entry"
           element={
