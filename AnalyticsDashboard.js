@@ -57,14 +57,13 @@ const AnalyticsDashboard = ({ logs }) => {
         ],
     };
 
-    
-
-    const handleDateRangeChange = (range) => {
-        setDateRange(range);
-        if (range === "custom") {
-            setCustomDate({ start: "", end: "" });
-        }  
-    };
+    const totalAmount = filteredData.reduce((sum, entry) => sum + parseFloat(entry.amount || 0), 0);
+    const mostActiveDay = filteredData.reduce((days, entry) => {
+        const day = new Date(entry.date).toLocaleDateString("en-US", { weekday: "long" });
+        days[day] = (days[day] || 0) + 1;
+        return days;
+    }, {});
+    const mostActiveDayName = Object.keys(mostActiveDay).reduce((a, b) => mostActiveDay[a] > mostActiveDay[b] ? a : b, "");
 
     return (
         <div className="analytics-dashboard">
@@ -73,19 +72,19 @@ const AnalyticsDashboard = ({ logs }) => {
             <div className="date-filters">
                 <button
                     className={`filter-button ${dateRange === "last7days" ? "active" : ""}`}
-                    onClick={() => handleDateRangeChange("last7days")}
+                    onClick={() => setDateRange("last7days")}
                 >
                     Last 7 Days
                 </button>
                 <button
                     className={`filter-button ${dateRange === "last30days" ? "active" : ""}`}
-                    onClick={() => handleDateRangeChange("last30days")}
+                    onClick={() => setDateRange("last30days")}
                 >
                     Last 30 Days
                 </button>
                 <button
                     className={`filter-button ${dateRange === "custom" ? "active" : ""}`}
-                    onClick={() => handleDateRangeChange("custom")}
+                    onClick={() => setDateRange("custom")}
                 >
                     Custom
                 </button>
@@ -129,25 +128,23 @@ const AnalyticsDashboard = ({ logs }) => {
 
             <div className="summary-metrics">
                 <div className="metric">
-                    <h2>Total Milestones</h2>
-                    <p>15</p>
-                </div>
-                <div className="metric">
-                    <h2>Average Session Time</h2>
-                    <p>25 minutes</p>
+                    <h2>Total Amount Fed</h2>
+                    <p>{totalAmount} Oz</p>
                 </div>
                 <div className="metric">
                     <h2>Most Active Day</h2>
-                    <p>Monday</p>
+                    <p>{mostActiveDayName || "N/A"}</p>
                 </div>
             </div>
 
             <div className="recent-activity">
                 <h2>Recent Activity</h2>
                 <ul>
-                    <li>Milestone: First words logged on 2024-12-01</li>
-                    <li>Feeding Session: 30 mins on 2024-12-02</li>
-                    <li>Pumping Session: 4 oz on 2024-12-03</li>
+                   {filteredData.slice(0, 5).map((entry) => (
+                    <li key={entry.id}>
+                        {entry.date}: {entry.amount} Oz - {entry.notes || "No notes"}
+                     </li>
+                   ))}
                 </ul>
             </div>
         </div>
