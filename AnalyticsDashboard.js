@@ -1,17 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Line, Pie } from "react-chartjs-2";
 import './AnalyticsDashboard.css';
+import { useFeedData } from "../Contexts/FeedDataContext";
 
 const AnalyticsDashboard = ({ logs }) => {
+    const { feedData } = useFeedData();
     const [dateRange, setDateRange] = useState("last7days");
     const [customDate, setCustomDate] = useState({ start: "", end: "" });
+    const [filteredData, setFilteredData] = useState([]);
+
+    useEffect(() => {
+        const now = new Date();
+        let filtered = feedData;
+
+        if (dateRange === "last7days") {
+            const last7Days = new Date();
+            last7Days.setDate(now.getDate() - 7);
+            filtered = feedData.filter(entry => new Date(entry.date) >= last7Days);
+        } else if (dateRange === "last30days") {
+            const last30Days = new Date();
+            last30Days.setDate(now.getDate() - 30);
+            filtered = feedData.filter(entry => new Date(entry.date) >= last30Days);
+        } else if (dateRange === "custom") {
+            const { start, end } = customDate;
+            if (start && end) {
+                filtered = feedData.filter(entry =>
+                    new Date(entry.date) >= new Date(start) &&
+                    new Date(entry.date) <= new Date(end)
+                );
+            }
+        }
+
+        setFilteredData(filtered);
+    }, [feedData, dateRange, customDate]);
 
     const lineChartData = {
-        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+        labels: filteredData.map(entry => entry.date),
         datasets: [
             {
-                label: "Feeding Sessions",
-                data: [3, 5, 2, 4, 6, 3, 7],
+                label: "Amount (Oz)",
+                data: filteredData.map(entry => entry.amount),
                 borderColor: "rgba(75, 192, 192, 1)",
                 backgroundColor: "rgba(75, 192, 192, 0.2)",
                 fill: true,
@@ -28,6 +56,8 @@ const AnalyticsDashboard = ({ logs }) => {
             },
         ],
     };
+
+    
 
     const handleDateRangeChange = (range) => {
         setDateRange(range);
