@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import './FeedTracker.css'; 
 import { useTheme } from "../utils/ThemeContext";
+import { useFeedData } from "../Contexts/FeedDataContext";
 
 const FeedTracker = ({ addEntry, entries = [] }) => {
     const { isDarkMode } = useTheme();
+    const { feedData, addFeedData } = useFeedData();
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
     const [amount, setAmount] = useState("");
@@ -26,7 +28,7 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
             notes,
         };
 
-        addEntry(newEntry);
+        addFeedData(newEntry);
         setAlertMessage("Your feed session has been logged successfully!");
 
         setTimeout(() => {
@@ -89,7 +91,7 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
 
             <h3>Feeding Log</h3>
             <ul>
-                {entries.map((entry) => (
+                {feedData.map((entry) => (
                     <li key={entry.id}>
                         <strong>{entry.date} {entry.time}</strong> - {entry.amount} Oz
                         <br />
