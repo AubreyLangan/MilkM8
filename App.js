@@ -31,6 +31,7 @@ import {
   ArcElement,
   Filler
 } from "chart.js";
+import FeedbackForm from "./Components/FeedbackForm";
 
 ChartJS.register(
   CategoryScale,
@@ -170,6 +171,7 @@ return (
             path="/help-center"
             element={ <HelpCenter /> }
           />
+          <Route path="/feedback-form" element={<FeedbackForm />} />
         </Routes>
         <Footer />
       </div>
