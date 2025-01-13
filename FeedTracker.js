@@ -5,13 +5,14 @@ import { useFeedData } from "../Contexts/FeedDataContext";
 
 const FeedTracker = ({ addEntry, entries = [] }) => {
     const { isDarkMode } = useTheme();
-    const { feedData, addFeedData } = useFeedData();
+    const { feedData, addFeedData, updateFeedData, deleteFeedData } = useFeedData();
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
     const [amount, setAmount] = useState("");
     const [feedType, setFeedType] = useState("Breastfeeding");
     const [notes, setNotes] = useState("");
     const [alertMessage, setAlertMessage] = useState("");
+    const [editingId, setEditingId] = useState(null);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,7 +23,7 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
         }
 
         const newEntry = {
-            id: Date.now(),
+            id: editingId || Date.now(),
             date,
             time,
             amount,
@@ -30,18 +31,41 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
             notes,
         };
 
-        addFeedData(newEntry);
-        setAlertMessage("Your feed session has been logged successfully!");
+        if (editingId) {
+            updateFeedData(newEntry);
+            setAlertMessage("Feed entry updated successfully!");
+        } else {
+            addFeedData(newEntry);
+            setAlertMessage("Feed entry added successfully!")
+        }
+
+        resetForm();
 
         setTimeout(() => {
             setAlertMessage("");
         }, 3000);
+    };
 
+    const resetForm = () => {
         setDate("");
         setTime("");
         setAmount("");
         setFeedType("Breastfeeding");
         setNotes("");
+        setEditingId(null);
+    };
+
+    const handleEdit = (entry) => {
+        setDate(entry.date);
+        setTime(entry.time);
+        setAmount(entry.amount);
+        setFeedType(entry.feedType);
+        setNotes(entry.notes);
+        setEditingId(entry.id);
+    };
+
+    const handleDelete = (id) => {
+        deleteFeedData(id);
     };
 
     return (
@@ -57,7 +81,7 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
             <form onSubmit={handleSubmit}>
                 <label>
                     Date:
-                    <input 
+                    <input
                         type="date"
                         value={date}
                         onChange={(e) => setDate(e.target.value)}
@@ -83,7 +107,7 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
                 </label>
                 <label>
                     Feed Type:
-                    <select 
+                    <select
                         value={feedType}
                         onChange={(e) => setFeedType(e.target.value)}
                         required
@@ -101,16 +125,20 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
                         placeholder="Optional notes..."
                     />
                 </label>
-                <button type="submit">Add Feed</button>
+                <button type="submit">{editingId ? "Save Changes" : "Add Feed"}</button>
             </form>
 
             <h3>Feeding Log</h3>
             <ul>
                 {feedData.map((entry) => (
                     <li key={entry.id}>
-                        <strong>{entry.date} {entry.time}</strong> - {entry.amount} Oz
+                        <strong>{entry.date} {entry.time}</strong> -{entry.amount} Oz
                         <br />
                         <em>{entry.notes || "No notes"}</em>
+                        <div>
+                            <button onClick={() => handleEdit(entry)}>Edit</button>
+                            <button onClick={() => handleDelete(entry.id)}>Delete</button>
+                        </div>
                     </li>
                 ))}
             </ul>
