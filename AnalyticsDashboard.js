@@ -34,12 +34,26 @@ const AnalyticsDashboard = ({ logs }) => {
         setFilteredData(filtered);
     }, [feedData, dateRange, customDate]);
 
+    const groupedData = filteredData.reduce((acc, entry) => {
+        const date = new Date(entry.date).toLocaleDateString();
+        acc[date] = (acc[date] || 0) + entry.amount;
+        return acc;
+    }, {});
+
+    const sessionsByType = filteredData.reduce(
+        (acc, entry) => {
+            acc[entry.type] = (acc[entry.type] || 0) + entry.amount;
+            return acc;
+        },
+        { Breastfeeding: 0, Pumping: 0, Formula: 0 }
+    );
+
     const lineChartData = {
-        labels: filteredData.map(entry => entry.date),
+        labels: Object.keys(groupedData),
         datasets: [
             {
                 label: "Amount (Oz)",
-                data: filteredData.map(entry => entry.amount),
+                data: Object.values(groupedData),
                 borderColor: "rgba(75, 192, 192, 1)",
                 backgroundColor: "rgba(75, 192, 192, 0.2)",
                 fill: true,
@@ -48,10 +62,10 @@ const AnalyticsDashboard = ({ logs }) => {
     };
 
     const pieChartData = {
-        labels: ["Breastfeeding", "Pumping", "Formula"],
+        labels: Object.keys(sessionsByType),
         datasets: [
             {
-                data: [50, 30, 20],
+                data: Object.values(sessionsByType),
                 backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
             },
         ],
