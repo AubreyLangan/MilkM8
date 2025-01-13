@@ -29,6 +29,7 @@ import {
   Tooltip,
   Legend,
   ArcElement,
+  Filler
 } from "chart.js";
 
 ChartJS.register(
@@ -39,7 +40,8 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  ArcElement
+  ArcElement,
+  Filler
 );
 
 
