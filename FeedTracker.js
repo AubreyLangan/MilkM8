@@ -9,6 +9,7 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
     const [amount, setAmount] = useState("");
+    const [feedType, setFeedType] = useState("Breastfeeding");
     const [notes, setNotes] = useState("");
     const [alertMessage, setAlertMessage] = useState("");
 
@@ -25,6 +26,7 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
             date,
             time,
             amount,
+            feedType,
             notes,
         };
 
@@ -38,6 +40,7 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
         setDate("");
         setTime("");
         setAmount("");
+        setFeedType("Breastfeeding");
         setNotes("");
     };
 
@@ -77,6 +80,18 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                     />
+                </label>
+                <label>
+                    Feed Type:
+                    <select 
+                        value={feedType}
+                        onChange={(e) => setFeedType(e.target.value)}
+                        required
+                    >
+                        <option value="Breastfeeding">Breastfeeding</option>
+                        <option value="Formula">Formula</option>
+                        <option value="Pumping">Pumping</option>
+                    </select>
                 </label>
                 <label>
                     Notes:
