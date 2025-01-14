@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import TipsGenerator from "../Components/TipsGenerator";
 import { useTheme } from "../utils/ThemeContext";
+import AnalyticsDashboard from "../Components/AnalyticsDashboard";
 
 const Home = ({ entries = [] }) => {
     const { isDarkMode } = useTheme();
@@ -24,6 +25,7 @@ const Home = ({ entries = [] }) => {
             <div className="cta-buttons">
                 <button onClick={() => navigate('/log-entry')}>Log a Session</button>
                 <button onClick={() => navigate('/stats')}>View Stats</button>
+                <button onClick={() => navigate('/feed-tracker')}>Log a Feed</button>
             </div>
 
             <h2>Recent Entries</h2>
@@ -37,6 +39,10 @@ const Home = ({ entries = [] }) => {
 
             <div className="tips">
                 <TipsGenerator />
+            </div>
+
+            <div className="analytics">
+                <AnalyticsDashboard />
             </div>
         </div>
     );
