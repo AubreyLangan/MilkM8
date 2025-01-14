@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import TipsGenerator from "../Components/TipsGenerator";
 import { useTheme } from "../utils/ThemeContext";
 import AnalyticsDashboard from "../Components/AnalyticsDashboard";
+import FeedStatistics from "../Components/FeedStatistics";
 
 const Home = ({ entries = [] }) => {
     const { isDarkMode } = useTheme();
@@ -16,6 +17,7 @@ const Home = ({ entries = [] }) => {
             <p>Your trusted companion for tracking pumping sessions.</p>
 
             <div className="summary">
+                <FeedStatistics />
                 <p><strong>Total Milk Logged:</strong> {totalMilk.toFixed(2)} {lastEntry.unit || 'oz'}</p>
                 {lastEntry.date && (
                     <p><strong>Last Session:</strong> {lastEntry.date} at {lastEntry.time} </p>
