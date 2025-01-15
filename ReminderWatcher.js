@@ -18,6 +18,8 @@ const ReminderWatcher = () => {
         const interval = setInterval(checkReminders, 6000);
         return () => clearInterval(interval);
     }, [reminders]);
+
+    return null;
 };
 
 export default ReminderWatcher;
