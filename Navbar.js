@@ -96,6 +96,11 @@ const Navbar = () => {
                     Feedback
                 </NavLink>
             </li>
+            <li>
+                <NavLink to="/reminders" className={({ isActive }) => (isActive ? "active" : "")}>
+                    Reminders
+                </NavLink>
+            </li>
         </ul>
       </nav>
     );
