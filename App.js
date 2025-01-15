@@ -9,7 +9,7 @@ import LogEntries from "./Components/LogEntries";
 import Resources from "./Components/Resources";
 import CalculatorPage from "./Pages/CalculatorPage";
 import UserProfile from "./Components/UserProfile";
-import { useTheme } from "./utils/ThemeContext";
+import { ThemeProvider, useTheme } from "./utils/ThemeContext";
 import { getFromLocalStorage, saveToLocalStorage } from "./utils/localStorage";
 import FeedTracker from "./Components/FeedTracker";
 import './App.css';
@@ -19,6 +19,7 @@ import SettingsPage from "./Pages/SettingsPage";
 import MilestoneTracker from "./Components/MilestoneTracker";
 import AnalyticsDashboard from "./Components/AnalyticsDashboard";
 import { FeedDataProvider } from "./Contexts/FeedDataContext";
+import ReminderPage from "./Pages/ReminderPage";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -32,6 +33,7 @@ import {
   Filler
 } from "chart.js";
 import FeedbackForm from "./Components/FeedbackForm";
+import { ReminderProvider } from "./Contexts/ReminderContext";
 
 ChartJS.register(
   CategoryScale,
@@ -102,81 +104,87 @@ const updateEntry = (updatedEntry) => {
 };
 
 return (
-  <FeedDataProvider>
-    <div className={`app ${isDarkMode ? "Dark" : "Light"}`}>
-      <header>
-        <button onClick={toggleTheme}>
-          Switch to {!isDarkMode ? "Dark" : "Light"} Mode
-        </button>
-      </header>
-      <Navbar />
-      {loading && <div className="loading-spinner">Loading...</div>}
-      <div className="content">
-        <Routes>
-          <Route path="/" element={<Home entries={entries} />} />
-          <Route path="/about-page" element={<AboutPage />} />
-          <Route path="/analytics-dashboard" element={<AnalyticsDashboard />} /> 
-          <Route
-            path="/log-entry"
-            element={
-              <LogEntry
-                addEntry={addEntry}
-                entries={entries}
-                deleteEntry={deleteEntry}
-                updateEntry={updateEntry}
+  <ThemeProvider>
+    <ReminderProvider>
+      <FeedDataProvider>
+        <div className={`app ${isDarkMode ? "Dark" : "Light"}`}>
+          <header>
+            <button onClick={toggleTheme}>
+              Switch to {isDarkMode ? "Light" : "Dark"}
+            </button>
+          </header>
+          <Navbar />
+          {loading && <div className="loading-spinner">Loading...
+        </div>}
+          <div className="content">
+            <Routes>
+              <Route path="/" element={<Home entries={entries} />} />
+              <Route path="/about-page" element={<AboutPage />} />
+              <Route path="/analytics-dashboard" element={<AnalyticsDashboard />} />
+              <Route
+                path="/log-entry"
+                element={
+                  <LogEntry
+                    addEntry={addEntry}
+                    entries={entries}
+                    deleteEntry={deleteEntry}
+                    updateEntry={updateEntry}
+                  />
+                }
               />
-            }
-          />
-          <Route path="/stats" element={<Stats entries={entries} />} />
-          <Route 
-            path="/log-entries"
-            element={
-              <LogEntries
-                entries={entries}
-                updateEntry={updateEntry}
-                setEntries={setEntries}
+              <Route path="/stats" element={<Stats entries={entries} />} />
+              <Route
+                path="/log-entries"
+                element={
+                  <LogEntries
+                    entries={entries}
+                    updateEntry={updateEntry}
+                    setEntries={setEntries}
+                  />
+                }
               />
-            }
-          />
-          <Route path="/milestone-tracker" element={<MilestoneTracker />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route
-            path="/calculators"
-            element={<CalculatorPage entries={entries}/> } 
-          />
-          <Route 
-            path="/profile"
-            element={
-              <UserProfile
-                updatedUser={handleUpdateUser}
-                userData={userData}
+              <Route path="/milestone-tracker" element={<MilestoneTracker />} />
+              <Route path="/resources" element={<Resources />} />
+              <Route
+                path="/calculators"
+                element={<CalculatorPage entries={entries}/> } 
               />
-            }
-          />
-          <Route 
-            path="/feed-tracker" 
-            element={
-              <FeedTracker
-                entries={entries}
-                addEntry={(entry) => {
-                  const updatedEntries = [...entries, entry];
-                  setEntries(updatedEntries);
-                  localStorage.setItem("entries", JSON.stringify(updatedEntries));
-                }}
+              <Route
+                path="/profile"
+                element={
+                  <UserProfile
+                  updatedUser={handleUpdateUser}
+                  userData={userData}
+                />
+                }
               />
-            }
-          />
-          <Route path="/settings-page" element={<SettingsPage />} />
-          <Route
-            path="/help-center"
-            element={ <HelpCenter /> }
-          />
-          <Route path="/feedback-form" element={<FeedbackForm />} />
-        </Routes>
-        <Footer />
-      </div>
-    </div>
-  </FeedDataProvider>
+              <Route
+                path="feed-tracker"
+                element={
+                  <FeedTracker 
+                    entries={entries}
+                    addEntry={(entry) => {
+                      const updatedEntries = [...entries, entry];
+                      setEntries(updatedEntries);
+                      localStorage.setItem("entries", JSON.stringify(updatedEntries));
+                    }}
+                  />
+                }
+              />
+              <Route path="/settings-page" element={<SettingsPage />} />
+              <Route
+                path="/help-center"
+                element={<HelpCenter />}
+              />
+              <Route path="/feedback-form" element={<FeedbackForm />} />
+              <Route path="/reminders" element={<ReminderPage />} />
+            </Routes>
+            <Footer />
+          </div>
+        </div>
+      </FeedDataProvider>
+    </ReminderProvider>
+  </ThemeProvider>
 );
 };
 
