@@ -8,15 +8,19 @@ export const ReminderProvider = ({ children }) => {
     const [reminders, setReminders] = useState([]);
 
     const addReminder = (reminder) => {
-        setReminders([...reminders, reminder]);
+        setReminders((prev) => [...prev, reminder]);
     };
 
-    const removeReminder = (id) => {
-        setReminders(reminders.filter((reminder) => reminder.id !== id));
+    const deleteReminder = (id) => {
+        setReminders((prev) => prev.filter((reminder) => reminder.id));
     };
-
+    
+    const updateReminder = (updatedReminder) => {
+        setReminders((prev) =>
+        prev.map((reminder) => (reminder.id === updatedReminder.id ? updatedReminder : reminder)))
+    };
     return (
-        <ReminderContext.Provider value={{ reminders, addReminder, removeReminder }}>
+        <ReminderContext.Provider value={{ reminders, addReminder, deleteReminder, updateReminder }}>
             {children}
         </ReminderContext.Provider>
     );
