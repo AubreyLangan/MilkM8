@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { useReminders } from "../Contexts/ReminderContext";
+import ConfirmationModal from "../Components/ConfirmatioModal";
+import './ReminderPage.css';
 
 const ReminderPage = () => {
     const { reminders, addReminder, deleteReminder, updateReminder } = useReminders();
     const [newReminder, setNewReminder] = useState({ title: "", date: "", time: "" });
     const [editingId, setEditingId] = useState("");
-    const [editedReminder, setEditedReminder] = useState({ title: "", date: "", time: "" })
+    const [editedReminder, setEditedReminder] = useState({ title: "", date: "", time: "" });
+    const [showModal, setShowModal] = useState(false);
+    const [reminderToDelete, setReminderToDelete] = useState(null);
     
     const handleAddReminder = () => {
         if (!newReminder.title || !newReminder.date || !newReminder.time) {
@@ -39,6 +43,24 @@ const ReminderPage = () => {
         setEditingId(null);
         setEditedReminder({ title: "", date: "", time: "" });
     };
+
+    const handleDeleteClick = (id) => {
+        const isConfirmed = window.confirm("Are you sure you want to delete this reminder?");
+        if (isConfirmed) {
+            deleteReminder(id);
+        }
+    };
+
+    const handleConfirmDelete = () => {
+        deleteReminder(reminderToDelete);
+        setShowModal(false);
+        setReminderToDelete(null);
+    };
+
+    const handleCancelDelete = () => {
+        setShowModal(false);
+        setReminderToDelete(null);
+    }
 
     return (
         <div>
@@ -88,11 +110,19 @@ const ReminderPage = () => {
                     <li key={reminder.id}>
                         <strong>{reminder.title}</strong> - {reminder.date} {reminder.time}
                         <button onClick={() => handleEditClick(reminder)}>Edit</button>
-                        <button onClick={() => deleteReminder(reminder.id)}>Delete</button>
+                        <button onClick={() => handleDeleteClick(reminder.id)}>Delete</button>
                     </li>
                 )
                 )}
             </ul>
+
+            {showModal && (
+                <ConfirmationModal
+                    message="Are you sure you want to delete this reminder?"
+                    onConfirm={handleConfirmDelete}
+                    onCancel={handleCancelDelete}
+                />
+            )}
         </div>
     );
 };
