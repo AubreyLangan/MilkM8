@@ -15,9 +15,12 @@ export const ReminderProvider = ({ children }) => {
         setReminders((prev) => prev.filter((reminder) => reminder.id));
     };
     
-    const updateReminder = (updatedReminder) => {
-        setReminders((prev) =>
-        prev.map((reminder) => (reminder.id === updatedReminder.id ? updatedReminder : reminder)))
+    const updateReminder = (id, updatedReminder) => {
+        setReminders((prevReminders) =>
+            prevReminders.map((reminder) =>
+                reminder.id === id ? { ...reminder, ...updatedReminder } : reminder
+            )
+        );
     };
     return (
         <ReminderContext.Provider value={{ reminders, addReminder, deleteReminder, updateReminder }}>
