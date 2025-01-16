@@ -12,7 +12,7 @@ export const ReminderProvider = ({ children }) => {
     };
 
     const deleteReminder = (id) => {
-        setReminders((prev) => prev.filter((reminder) => reminder.id));
+        setReminders((prevReminders) => prevReminders.filter((reminder) => reminder.id !== id));
     };
     
     const updateReminder = (id, updatedReminder) => {
