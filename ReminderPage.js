@@ -6,7 +6,7 @@ import './ReminderPage.css';
 const ReminderPage = () => {
     const { reminders, addReminder, deleteReminder, updateReminder } = useReminders();
     const [newReminder, setNewReminder] = useState({ title: "", date: "", time: "" });
-    const [editingId, setEditingId] = useState("");
+    const [editingId, setEditingId] = useState(null);
     const [editedReminder, setEditedReminder] = useState({ title: "", date: "", time: "" });
     const [showModal, setShowModal] = useState(false);
     const [reminderToDelete, setReminderToDelete] = useState(null);
@@ -45,10 +45,8 @@ const ReminderPage = () => {
     };
 
     const handleDeleteClick = (id) => {
-        const isConfirmed = window.confirm("Are you sure you want to delete this reminder?");
-        if (isConfirmed) {
-            deleteReminder(id);
-        }
+      setReminderToDelete(id);
+      setShowModal(true);
     };
 
     const handleConfirmDelete = () => {
@@ -68,7 +66,7 @@ const ReminderPage = () => {
             <div>
                 <input
                     type="text"
-                    value={newReminder}
+                    value={newReminder.title}
                     onChange={(e) => setNewReminder({...newReminder, title: e.target.value})}
                     placeholder="Reminder Title"
                 />
