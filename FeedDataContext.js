@@ -11,8 +11,18 @@ export const FeedDataProvider = ({ children }) => {
         setFeedData((prevData) => [...prevData, entry]);
     };
 
+    const updateFeedData = (updatedEntry) => {
+        setFeedData((prev) =>
+        prev.map((entry) => (entry.id === updatedEntry.id ? updatedEntry : entry))
+        );
+    };
+
+    const deleteFeedData = (id) => {
+        setFeedData((prev) => prev.filter((entry) => entry.id !== id));
+    };
+
     return (
-        <FeedDataContext.Provider value={{ feedData, addFeedData }}>
+        <FeedDataContext.Provider value={{ feedData, addFeedData, updateFeedData, deleteFeedData }}>
             {children}
         </FeedDataContext.Provider>
     )
