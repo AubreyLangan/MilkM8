@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './FeedTracker.css'; 
 import { useTheme } from "../utils/ThemeContext";
 import { useFeedData } from "../Contexts/FeedDataContext";
-import ConfirmationModal from "./ConfirmatioModal";
+import ConfirmationModal from "./ConfirmationModal";
 
 const FeedTracker = ({ addEntry, entries = [] }) => {
     const { isDarkMode } = useTheme();
@@ -164,7 +164,7 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
                         <em>{entry.notes || "No notes"}</em>
                         <div>
                             <button onClick={() => handleEdit(entry)}>Edit</button>
-                            <button onClick={() => handleDelete(entry.id)}>Delete</button>
+                            <button onClick={() => handleDelete(entry)}>Delete</button>
                         </div>
                     </li>
                 ))}
