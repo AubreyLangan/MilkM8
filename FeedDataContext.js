@@ -21,8 +21,28 @@ export const FeedDataProvider = ({ children }) => {
         setFeedData((prev) => prev.filter((entry) => entry.id !== id));
     };
 
+    const [milkStash, setMilkStash] = useState({
+        fridge: 0,
+        freezer: 0,
+        deepFreezer: 0,
+    });
+
+    const addMilkStash = (amount, location) => {
+        setMilkStash((prev) => ({
+            ...prev,
+            [location]: prev[location] + amount,
+        }));
+    };
+
+    const removeMilkStash = (amount, location) => {
+        setMilkStash((prev) => ({
+            ...prev,
+            [location]: Math.max(onabort, prev[location] - amount),
+        }));
+    };
+
     return (
-        <FeedDataContext.Provider value={{ feedData, addFeedData, updateFeedData, deleteFeedData }}>
+        <FeedDataContext.Provider value={{ feedData, addFeedData, updateFeedData, deleteFeedData, milkStash, addMilkStash, removeMilkStash }}>
             {children}
         </FeedDataContext.Provider>
     )
