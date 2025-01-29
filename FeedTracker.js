@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import './FeedTracker.css'; 
 import { useTheme } from "../utils/ThemeContext";
 import { useFeedData } from "../Contexts/FeedDataContext";
+import ConfirmationModal from "./ConfirmatioModal";
 
 const FeedTracker = ({ addEntry, entries = [] }) => {
     const { isDarkMode } = useTheme();
@@ -13,6 +14,9 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
     const [notes, setNotes] = useState("");
     const [alertMessage, setAlertMessage] = useState("");
     const [editingId, setEditingId] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalAction, setModalAction] = useState(null);
+    const [selectedEntry, setSelectedEntry] = useState(null);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -64,8 +68,31 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
         setEditingId(entry.id);
     };
 
-    const handleDelete = (id) => {
-        deleteFeedData(id);
+    const handleDelete = (entry) => {
+        setSelectedEntry(entry);
+        setModalAction("delete");
+        setIsModalOpen(true);
+    };
+
+    const openModal = (action, entry = null) => {
+        setModalAction(action);
+        setSelectedEntry(entry);
+        setIsModalOpen(true);
+    };
+
+    const handleModalConfirm = () => {
+        if (modalAction === "delete" && selectedEntry) {
+            deleteFeedData(selectedEntry.id);
+            setAlertMessage("Feed entry deleted successfully!");
+        }
+
+        setIsModalOpen(false);
+        setSelectedEntry(null);
+    };
+
+    const handleModalCancel = () => {
+        setIsModalOpen(false);
+        setSelectedEntry(null);
     };
 
     return (
@@ -142,6 +169,20 @@ const FeedTracker = ({ addEntry, entries = [] }) => {
                     </li>
                 ))}
             </ul>
+
+            <ConfirmationModal
+                isOpen={isModalOpen}
+                message={
+                    modalAction === "delete"
+                        ? "Are you sure you want to delete this entry?"
+                        : "Are you sure you want to proceed?"
+                }
+                onConfirm={handleModalConfirm}
+                onCancel={handleModalCancel}
+            />
+            <button type="button" onClick={() => openModal("reset")}>
+                Reset Form
+            </button>
         </div>
     );
 };
