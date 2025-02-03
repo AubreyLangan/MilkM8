@@ -6,6 +6,7 @@ export const useFeedData = () => useContext(FeedDataContext);
 
 export const FeedDataProvider = ({ children }) => {
     const [feedData, setFeedData] = useState([]);
+    const [milkStash, setMilkStash] = useState([]);
 
     const addFeedData = (entry) => {
         setFeedData((prevData) => [...prevData, entry]);
@@ -13,7 +14,7 @@ export const FeedDataProvider = ({ children }) => {
 
     const updateFeedData = (updatedEntry) => {
         setFeedData((prev) =>
-        prev.map((entry) => (entry.id === updatedEntry.id ? updatedEntry : entry))
+            prev.map((entry) => (entry.id === updatedEntry.id ? updatedEntry : entry))
         );
     };
 
@@ -21,29 +22,42 @@ export const FeedDataProvider = ({ children }) => {
         setFeedData((prev) => prev.filter((entry) => entry.id !== id));
     };
 
-    const [milkStash, setMilkStash] = useState({
-        fridge: 0,
-        freezer: 0,
-        deepFreezer: 0,
-    });
-
     const addMilkStash = (amount, location) => {
-        setMilkStash((prev) => ({
-            ...prev,
-            [location]: prev[location] + amount,
-        }));
+        const newEntry = {
+            id: Date.now(),
+            amount: parseFloat(amount),
+            location,
+        };
+        setMilkStash((prev) => [...prev, newEntry]);
     };
 
-    const removeMilkStash = (amount, location) => {
-        setMilkStash((prev) => ({
-            ...prev,
-            [location]: Math.max(onabort, prev[location] - amount),
-        }));
+    const updateMilkStash = (entry) => {
+        setMilkStash((prev) =>
+            prev.map((item) => (item.id === entry.id ? entry : item))
+        );
     };
+
+    const removeMilkStash = (id) => {
+        setMilkStash((prev) => prev.filter((entry) => entry.id !== id));
+    };
+
+    console.log(milkStash);
 
     return (
-        <FeedDataContext.Provider value={{ feedData, addFeedData, updateFeedData, deleteFeedData, milkStash, addMilkStash, removeMilkStash }}>
+        <FeedDataContext.Provider 
+            value={{ 
+                feedData, 
+                addFeedData, 
+                updateFeedData, 
+                deleteFeedData,  
+                addMilkStash,
+                updateMilkStash, 
+                removeMilkStash, 
+            }}
+        >
             {children}
         </FeedDataContext.Provider>
-    )
-}
+    );
+};
+
+export default FeedDataProvider;
