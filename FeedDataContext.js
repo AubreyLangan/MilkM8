@@ -46,7 +46,8 @@ export const FeedDataProvider = ({ children }) => {
     return (
         <FeedDataContext.Provider 
             value={{ 
-                feedData, 
+                feedData,
+                milkStash, 
                 addFeedData, 
                 updateFeedData, 
                 deleteFeedData,  
