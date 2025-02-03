@@ -85,7 +85,10 @@ const MilkStashTracker = () => {
             </form>
 
             <h3>Current Milk Stash</h3>
-            <ul>
+            {milkStash.length === 0 ? (
+                <p>No milk stored yet.</p>
+            ) : (
+                <ul>
                 {milkStash.map((entry) => (
                     <li key={entry.id}>
                         <strong>{entry.amount} Oz</strong> - {entry.location}
@@ -96,6 +99,8 @@ const MilkStashTracker = () => {
                     </li>
                 ))}
             </ul>
+            )}
+            
         </div>
     );
 };
