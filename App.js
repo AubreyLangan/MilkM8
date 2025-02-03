@@ -34,6 +34,7 @@ import {
 } from "chart.js";
 import FeedbackForm from "./Components/FeedbackForm";
 import { ReminderProvider } from "./Contexts/ReminderContext";
+import MilkStashTracker from "./Components/MilkStashTracker";
 
 ChartJS.register(
   CategoryScale,
@@ -143,6 +144,7 @@ return (
                   />
                 }
               />
+              <Route path="/milk-stash-tracker" element={<MilkStashTracker />} />
               <Route path="/milestone-tracker" element={<MilestoneTracker />} />
               <Route path="/resources" element={<Resources />} />
               <Route
