@@ -18,7 +18,7 @@ const MilkStashTracker = () => {
         const newEntry = {
             id: editingId || Date.now(),
             amount: parseFloat(amount),
-            location,
+            location: location || "fridge",
         };
 
         if (editingId) {
@@ -56,6 +56,13 @@ const MilkStashTracker = () => {
         }, 3000);
     };
 
+    const formatLocation = (loc) => {
+        if (loc === "fridge") return "Fridge";
+        if (loc === "freezer") return "Freezer";
+        if (loc === "deepFreezer") return "Deep Freezer";
+        return "Unknown";
+    };
+
     return (
         <div className="milk-stash-tracker">
             <h2>Milk Stash Tracker</h2>
@@ -91,16 +98,15 @@ const MilkStashTracker = () => {
                 <ul>
                 {milkStash.map((entry) => (
                     <li key={entry.id}>
-                        <strong>{entry.amount} Oz</strong> - {entry.location}
+                        <strong>{entry.amount} Oz</strong> - {formatLocation(entry.location)}
                         <div>
                             <button onClick={() => handleEdit(entry)}>Edit</button>
                             <button onClick={() => handleDelete(entry.id)}>Remove</button>
                         </div>
                     </li>
                 ))}
-            </ul>
+                </ul>
             )}
-            
         </div>
     );
 };
