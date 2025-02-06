@@ -22,13 +22,8 @@ export const FeedDataProvider = ({ children }) => {
         setFeedData((prev) => prev.filter((entry) => entry.id !== id));
     };
 
-    const addMilkStash = (amount, location) => {
-        const newEntry = {
-            id: Date.now(),
-            amount: parseFloat(amount),
-            location,
-        };
-        setMilkStash((prev) => [...prev, newEntry]);
+    const addMilkStash = (entry) => {
+        setMilkStash((prev) => [...prev, entry]);
     };
 
     const updateMilkStash = (entry) => {
