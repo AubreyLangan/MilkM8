@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useFeedData } from "../Contexts/FeedDataContext";
+import styles from "./MilkStashTracker.module.css";
 
 const MilkStashTracker = () => {
     const { milkStash, addMilkStash, updateMilkStash, removeMilkStash } = useFeedData();
@@ -64,12 +65,12 @@ const MilkStashTracker = () => {
     };
 
     return (
-        <div className="milk-stash-tracker">
-            <h2>Milk Stash Tracker</h2>
+        <div className={styles.container}>
+            <h2 className={styles.title}>Milk Stash Tracker</h2>
 
-            {alertMessage && <div className="alert alert-success">{alertMessage}</div>}
+            {alertMessage && <div className={styles.alert}>{alertMessage}</div>}
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className={styles.form}>
                 <label>
                     Amount (oz):
                     <input
@@ -78,6 +79,7 @@ const MilkStashTracker = () => {
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                         required
+                        className={styles.input}
                     />
                 </label>
                 <label>
@@ -88,18 +90,20 @@ const MilkStashTracker = () => {
                         <option value="deepFreezer">Deep Freezer</option>
                     </select>
                 </label>
-                <button type="submit">{editingId ? "Save Changes" : "Add Milk"}</button>
+                <button type="submit" className={styles.button}>{editingId ? "Save Changes" : "Add Milk"}</button>
             </form>
 
-            <h3>Current Milk Stash</h3>
+            <h3 className={styles.subtitle}>Current Milk Stash</h3>
             {milkStash.length === 0 ? (
-                <p>No milk stored yet.</p>
+                <p className={styles.noData}>No milk stored yet.</p>
             ) : (
-                <ul>
+                <ul className={styles.list}>
                 {milkStash.map((entry) => (
-                    <li key={entry.id}>
-                        <strong>{entry.amount} Oz</strong> - {formatLocation(entry.location)}
-                        <div>
+                    <li key={entry.id} className={styles.listItem}>
+                        <span className={styles.milkAmount}>
+                            {entry.amount} Oz - {formatLocation(entry.location)}
+                        </span>
+                        <div className="styles.action">
                             <button onClick={() => handleEdit(entry)}>Edit</button>
                             <button onClick={() => handleDelete(entry.id)}>Remove</button>
                         </div>
