@@ -4,6 +4,7 @@ import TipsGenerator from "../Components/TipsGenerator";
 import { useTheme } from "../utils/ThemeContext";
 import AnalyticsDashboard from "../Components/AnalyticsDashboard";
 import FeedStatistics from "../Components/FeedStatistics";
+import MilkStashTracker from "../Components/MilkStashTracker";
 
 const Home = ({ entries = [] }) => {
     const { isDarkMode } = useTheme();
@@ -15,6 +16,8 @@ const Home = ({ entries = [] }) => {
         <div className={`home ${isDarkMode ? "dark" : "light"}`}>
             <h1>Welcome to MilkM8</h1>
             <p>Your trusted companion for tracking pumping sessions.</p>
+
+            <MilkStashTracker />
 
             <div className="summary">
                 <FeedStatistics />
