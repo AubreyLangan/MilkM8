@@ -12,6 +12,8 @@ const Navbar = () => {
     const isHome = location.pathname === "/";
 
     const [isOpen, setIsOpen] = useState(false);
+    const [statsDropdown, setStatsDropdown] = useState(false);
+    const [trackersDropdown, setTrackersDropdown] = useState(false);
 
     const handleToggle = () => {
         setIsOpen((prevState) => !prevState);
@@ -38,33 +40,84 @@ const Navbar = () => {
             </div>
 
             <ul className={`menu ${isOpen ? "open" : ""}`} data-isopen={isOpen}>
-                {[
-                    { path: "/", label: "Home" },
-                    { path: "/about-page", label: "About" },
-                    { path: "/log-entry", label: "Log Entry" },
-                    { path: "/stats", label: "Stats" },
-                    { path: "/resources", label: "Resources" },
-                    { path: "/calculators", label: "Calculators" },
-                    { path: "/profile", label: "Profile" },
-                    { path: "/feed-tracker", label: "Feed Tracker" },
-                    { path: "/milestone-tracker", label: "Milestone Tracker" },
-                    { path: "/settings-page", label: "Settings" },
-                    { path: "/help-center", label: "Help Center" },
-                    { path: "/feedback-form", label: "Feedback" },
-                    { path: "/reminders", label: "Reminders" },
-                ].map(({ path, label }) => (
-                    <li key={path}>
-                        <NavLink
-                            to={path}
-                            className={({ isActive }) => (isActive ? "active" : "")}
-                        >
-                            {label}
-                        </NavLink>
-                    </li>
-                ))}
+                <li>
+                    <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
+                        Home
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/about-page" className={({ isActive }) => (isActive ? "active" : "")}>
+                        About
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/log-entry" className={({ isActive }) => (isActive ? "active" : "")}>
+                        Log Entry
+                    </NavLink>
+                </li>
+                <li
+                    className="dropdown"
+                    onMouseEnter={() => setStatsDropdown(true)}
+                    onMouseLeave={() => setStatsDropdown(false)}
+                >
+                    <span className="dropdown-title">Stats ▾</span>
+                    {statsDropdown && (
+                        <ul className="dropdown-menu">
+                            <li>
+                                <NavLink to="/stats">Overview</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/progress-trends">Progress & Trends</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/feeding-patterns">Feeding Patterns</NavLink>
+                            </li>
+                        </ul>
+                    )}
+                </li>
+
+                <li
+                    className="dropdown"
+                    onMouseEnter={() => setTrackersDropdown(true)}
+                    onMouseLeave={() => setTrackersDropdown(false)}
+                >
+                    <span className="dropdown-title">Trackers ▾</span>
+                    {trackersDropdown && (
+                        <ul className="dropdown-menu">
+                            <li>
+                                <NavLink to="/feed-tracker">Feed Tracker</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/milestone-tracker">Milestone Tracker</NavLink>
+                            </li>
+                        </ul>
+                    )}
+                </li>
+
+                <li>
+                    <NavLink to="/resources">Resources</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/calculators">Calculators</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/profile">Profile</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/settings-page">Settings</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/help-center">Help Center</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/feedback-form">Feedback</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/reminders">Reminders</NavLink>
+                </li>
             </ul>
         </nav>
-    )
+    );
 };
 
 export default Navbar;
