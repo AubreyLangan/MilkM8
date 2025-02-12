@@ -9,7 +9,7 @@ import LogEntries from "./Components/LogEntries";
 import Resources from "./Components/Resources";
 import CalculatorPage from "./Pages/CalculatorPage";
 import UserProfile from "./Components/UserProfile";
-import { ThemeProvider, useTheme } from "./utils/ThemeContext";
+import { ThemeProvider } from "./utils/ThemeContext";
 import { getFromLocalStorage, saveToLocalStorage } from "./utils/localStorage";
 import FeedTracker from "./Components/FeedTracker";
 import './App.css';
@@ -51,7 +51,6 @@ ChartJS.register(
 
 
 const App = () => {
-  const { isDarkMode, toggleTheme } = useTheme();
 
   const [userData, setUserData] = useState(() =>
   getFromLocalStorage("userData", {
@@ -66,8 +65,6 @@ const [entries, setEntries] = useState(() =>
   getFromLocalStorage("entries", [])
 );
 
-const [loading, setLoading] = useState(false);
-
 const handleUpdateUser = (updatedProfile) => {
   if (typeof updatedProfile === "object" && updatedProfile !== null) {
     setUserData(updatedProfile);
@@ -78,16 +75,9 @@ const handleUpdateUser = (updatedProfile) => {
 };
 
 const addEntry = async (entry) => {
-  setLoading(true);
-  try {
-    const newEntries = [...entries, entry];
-    setEntries(newEntries);
-    saveToLocalStorage("entries", newEntries);
-  } catch (error) {
-    console.error("Error adding entry:", error);
-  } finally {
-    setLoading(false);
-  }
+  const updatedEntries = [...entries, entry];
+  setEntries(updatedEntries);
+  saveToLocalStorage("entries", updatedEntries);
 };
 
 const deleteEntry = (id) => {
@@ -108,15 +98,8 @@ return (
   <ThemeProvider>
     <ReminderProvider>
       <FeedDataProvider>
-        <div className={`app ${isDarkMode ? "Dark" : "Light"}`}>
-          <header>
-            <button onClick={toggleTheme}>
-              Switch to {isDarkMode ? "Light" : "Dark"}
-            </button>
-          </header>
+        <div className="app">
           <Navbar />
-          {loading && <div className="loading-spinner">Loading...
-        </div>}
           <div className="content">
             <Routes>
               <Route path="/" element={<Home entries={entries} />} />
@@ -147,10 +130,7 @@ return (
               <Route path="/milk-stash-tracker" element={<MilkStashTracker />} />
               <Route path="/milestone-tracker" element={<MilestoneTracker />} />
               <Route path="/resources" element={<Resources />} />
-              <Route
-                path="/calculators"
-                element={<CalculatorPage entries={entries}/> } 
-              />
+              <Route path="/calculators" element={<CalculatorPage entries={entries}/> } />
               <Route
                 path="/profile"
                 element={
@@ -161,15 +141,11 @@ return (
                 }
               />
               <Route
-                path="feed-tracker"
+                path="/feed-tracker"
                 element={
                   <FeedTracker 
                     entries={entries}
-                    addEntry={(entry) => {
-                      const updatedEntries = [...entries, entry];
-                      setEntries(updatedEntries);
-                      localStorage.setItem("entries", JSON.stringify(updatedEntries));
-                    }}
+                    addEntry={(addEntry)}
                   />
                 }
               />
