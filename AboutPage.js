@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './AboutPage.css';
 
 const AboutPage = () => {
@@ -43,7 +44,6 @@ const AboutPage = () => {
                 <h2>Meet the Team</h2>
                 <div className="team-grid">
                     <div className="team-member">
-                        <img src="" />
                         <h3>Aubrey Langan</h3>
                         <p>Founder & Developer</p>
                     </div>
@@ -52,7 +52,8 @@ const AboutPage = () => {
 
             <footer className="about-footer">
                 <h2>Join Us!</h2>
-                <p>Take control of your baby care journey. <a href="/signup">Sign up now</a></p>
+                <p>Take control of your baby care journey.</p>
+                <Link to="/sign-up" className="signip-link">Sign Up Here</Link>
             </footer>
         </div>
     );
