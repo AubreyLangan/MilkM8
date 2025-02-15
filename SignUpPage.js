@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./SignUpPage.css";
 
 const SignUpPage = () => {
     const navigate = useNavigate();
@@ -50,6 +51,8 @@ const SignUpPage = () => {
                     onChange={handleChange}
                     required
                 />
+
+                <button type="submit">Sign Up</button>
             </form>
         </div>
     );
