@@ -35,6 +35,7 @@ import {
 import FeedbackForm from "./Components/FeedbackForm";
 import { ReminderProvider } from "./Contexts/ReminderContext";
 import MilkStashTracker from "./Components/MilkStashTracker";
+import SignUpPage from "./Pages/SignUpPage";
 
 ChartJS.register(
   CategoryScale,
@@ -104,6 +105,7 @@ return (
             <Routes>
               <Route path="/" element={<Home entries={entries} />} />
               <Route path="/about-page" element={<AboutPage />} />
+              <Route path="/sign-up" element={<SignUpPage />} />
               <Route path="/analytics-dashboard" element={<AnalyticsDashboard />} />
               <Route
                 path="/log-entry"
