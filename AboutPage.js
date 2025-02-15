@@ -14,19 +14,27 @@ const AboutPage = () => {
                 <h2>Key Features</h2>
                 <div className="features-grid">
                     <div className="feature">
-                        <h3>Feeding Tracker</h3>
+                        <h3>
+                            <Link to="/feed-tracker">Feeding Tracker</Link>
+                        </h3>
                         <p>Easily log and track feeding sessions.</p>
                     </div>
                     <div className="feature">
-                        <h3>Pumping Tracker</h3>
+                        <h3>
+                            <Link to="/log-entry">Pumping Tracker</Link>
+                        </h3>
                         <p>Record pumping sessions and manage supply.</p>
                     </div>
                     <div className="feature">
-                        <h3>Weaning Calculator</h3>
-                        <p>Create a personalized weaning schedule.</p>
+                        <h3>
+                            <Link to="/calculators">Calculators</Link>
+                        </h3>
+                        <p>A variety of breastmilk related calculators to make your life easier.</p>
                     </div>
                     <div className="feature">
-                        <h3>Help Center</h3>
+                        <h3>
+                            <Link to="/help-center">Help Center</Link>
+                        </h3>
                         <p>Get answers to your questions in our FAQ section.</p>
                     </div>
                 </div>
