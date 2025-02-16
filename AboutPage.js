@@ -1,10 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './AboutPage.css';
+import { useTheme } from "../utils/ThemeContext";
 
 const AboutPage = () => {
+    
+    const { isDarkMode } = useTheme();
+
     return (
-        <div className="about-page">
+        <div className={`about-page ${isDarkMode ? "dark" : "light"}`}>
             <header className="about-header">
                 <h1>About Our App</h1>
                 <p>Your trusted companion for feeding and baby care tracking.</p>
