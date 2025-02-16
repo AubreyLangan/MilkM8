@@ -27,3 +27,41 @@ body {
   color: var(--text-color-dark);
 }
 
+.navbar {
+  background: var(--primary-color);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 4px 10px var(--shadow-light);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar.dark-mode {
+  box-shadow: 0px 4px 10px var(--shadow-dark);
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.navbar a:hover {
+  opacity: 0.8;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: var(--border-radius);
+  background: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
