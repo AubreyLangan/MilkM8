@@ -18,22 +18,74 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.about-page.light {
+    background: var(--bg-light);
+    color: var(--text-color-light);
+}
+
+.about-page.dark {
+    background: var(--bg-dark);
+    color: var(--text-color-dark);
+}
+
 .about-header {
     text-align: center;
-    background: var(--secondary-color);
-    color: var(--text-dark);
-    padding: 30px 20px;
-    border-radius: 8px;
+   padding: 2rem 1rem;
+   background: var(--primary-color);
+   color: white;
+   border-radius: var(--border-radius);
+   box-shadow: 0 4px 8px var(--shadow-light);
+}
+
+.about-header h1 {
+    color: var(--secondary-color);
 }
 
 .about-features, .about-story, .about-team {
     margin: 20px 0;
 }
 
+.about-features {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 1rem;
+}
+
 .features-grid, .team-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+}
+
+.feature {
+    background: var(--card-bg-light);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px var(--shadow-light);
+    transition: var(--transition);
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px var(--shadow-light);
+}
+
+.feature a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.feature a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
 }
 
 .feature, .team-member {
@@ -59,9 +111,31 @@
 
 .about-footer {
     text-align: center;
-    margin: 20px 0;
-    background: var(--background-dark);
-    color: var(--text-light);
-    padding: 20px;
-    border-radius: 8px;
+    padding: 2rem;
+    background: var(--primary-color);
+    color: white;
+    border-radius: var(--border-radius);
+    margin-top: 3rem;
+}
+
+.signup-link {
+    display: inline-block;
+    padding: 10px 15px;
+    background: white;
+    color: var(--primary-color);
+    font-weight: bold;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.signup-link:hover {
+    background: var(--secondary-color);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
 }
