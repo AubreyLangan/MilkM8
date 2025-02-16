@@ -92,6 +92,7 @@ button:hover {
 }
 
 .about-features h2 {
+  color: var(--secondary-color);
   margin-top: 20px;
   font-size: 2rem;
 }
@@ -131,8 +132,17 @@ button:hover {
   color: var(--secondary-color);
 }
 
+.about-story h2 {
+  color: var(--secondary-color);
+}
+
+.about-team h2,
+.about-team h3 {
+  color: var(--secondary-color);
+}
+
 .about-footer {
-  background: var(--primary-color);
+  background: var(--secondary-color);
   color: white;
   padding: 20px;
   border-radius: var(--border-radius);
