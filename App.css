@@ -65,3 +65,87 @@ button {
   transition: var(--transition);
 }
 
+button:hover {
+  background: var(--secondary-color);
+  color: black;
+}
+
+.about-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: var(--card-bg-light);
+  box-shadow: 0px 5px 15px var((--shadow-light));
+  border-radius: var(--border-radius);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.about-page.dark-mode {
+  background: var(--card-bg-dark);
+  box-shadow: 0px 5px 15px var(--shadow-dark);
+}
+
+.about-header h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+}
+
+.about-features h2 {
+  margin-top: 20px;
+  font-size: 2rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+.feature {
+  background: var(--card-bg-light);
+  padding: 15px;
+  border-radius: var(--border-radius);
+  box-shadow: 0px 4px 10px var(--shadow-light);
+  transition: var(--transition);
+}
+
+.feature.dark-mode {
+  background: var(--card-bg-dark);
+  box-shadow: 0px 4px 10px var(--shadow-dark);
+}
+
+.feature h3 {
+  font-size: 1.5rem;
+}
+
+.feature a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+  transition: var(--transition);
+}
+
+.feature a:hover {
+  color: var(--secondary-color);
+}
+
+.about-footer {
+  background: var(--primary-color);
+  color: white;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  text-align: center;
+  margin-top: 30px;
+}
+
+.about-footer a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.about-footer a:hover {
+  text-decoration: underline;
+}
