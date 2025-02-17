@@ -1,25 +1,51 @@
+:root {
+    --primary-color: #6c63ff;
+    --secondary-color: #A89CFF;
+    --text-color-light: #333;
+    --text-color-dark: #fff;
+    --bg-light: #f4f4f9;
+    --bg-dark: #222;
+    --card-bg-light: #fff;
+    --card-bg-dark: #333;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(255, 255, 255, 0.1);
+    --border-radius: 10px;
+    --transition: all 0.3s ease-in-out;
+  }
+
 .milk-stash-calculator {
     max-width: 400px;
     margin: 20px auto;
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px auto;
+    background: var(--card-bg-light);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px var(--shadow-light);
     text-align: center;
+    transition: var(--transition);
 }
 
 .milk-stash-calculator label {
     display: block;
     margin: 10px 0;
     font-size: 1rem;
+    font-weight: bold;
+    color: var(--text-color-light);
 }
 
 .milk-stash-calculator input {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
-    border: 1px solid #0288d1;
+    border: 1px solid var(--primary-color);
     border-radius: 5px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.milk-stash-calculator input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 5px var(--secondary-color);
 }
 
 .milk-stash-calculator button {
