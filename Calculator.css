@@ -73,3 +73,54 @@
     color: var(--primary-color);
 }
 
+.milk-stash-calculator.dark {
+    background: var(--card-bg-dark);
+    color: var(--text-color-dark);
+    box-shadow: 0 4px 6px var(--shadow-dark);
+}
+
+.milk-stash-calculator.dark label {
+    color: var(--text-color-dark);
+}
+
+.milk-stash-calculator.dark input {
+    background: var(--bg-dark);
+    color: var(--text-color-dark);
+    border: 1px solid var(--secondary-color);
+}
+
+.milk-stash-calculator.dark input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+.milk-stash-calculator.dark button {
+    background-color: var(--secondary-color);
+}
+
+.milk-stash-calculator.dark .result {
+    color: var(--secondary-color);
+}
+
+@media (max-width: 500px) {
+    .milk-stash-calculator {
+        padding: 15px;
+    }
+
+    .milk-stash-calculator label {
+        font-size: 0.9rem;
+    }
+
+    .milk-stash-calculator input {
+        font-size: 0.9rem;
+    }
+
+    .milk-stash-calculator button {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+
+    .result {
+        font-size: 1rem;
+    }
+}
