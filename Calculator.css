@@ -49,22 +49,27 @@
 }
 
 .milk-stash-calculator button {
-    background-color: #0288d1;
-    color: #ffffff;
+    background-color: var(--primary-color);
+    color: var(--text-color-dark);
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     cursor: pointer;
     margin-top: 10px;
-    transition: background 0.3s;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: var(--transition);
 }
 
 .milk-stash-calculator button:hover {
-    background-color: #0277bd;
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
 }
 
 .result {
     margin-top: 20px;
     font-size: 1.2rem;
-    color: #01579b;
+    font-weight: bold;
+    color: var(--primary-color);
 }
+
