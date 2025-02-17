@@ -76,13 +76,36 @@
     color: var(--text-color-light);
 }
 
+.resources.dark {
+    background: var(--bg-dark);
+    color: var(--text-color-dark);
+    box-shadow: 0 4px 6px var(--shadow-dark);
+}
+
+.resources.dark .resource-item {
+    background: var(--card-bg-dark);
+    border-left: 4px solid var(--secondary-color);
+}
+
+.resources.dark .resource-item:nth-child(odd) {
+    background: #333a56;
+}
+
+.resources.dark .resource-item a {
+    counter-reset: var(--secondary-color);
+}
+
+.resources.dark .resource-item p {
+    color: var(--text-color-dark);
+}
+
 @media (max-width: 600px) {
     .resources {
         padding: 10px;
     }
 
     .resources h1 {
-        font-size: 1.5em;
+        font-size: 1.6em;
     }
 
     .resource-item a {
