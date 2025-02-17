@@ -44,20 +44,24 @@
 }
 
 .category.active {
-    background-color: var(--accent-hover);
-    font-weight: bold;
+    background-color: var(--secondary-color);
+    box-shadow: 0 3px 6px var(--shadow-light);
 }
 
 .faq-content {
-    background: var(--background-light);
-    color: var(--text-light);
+    background: var(--card-bg-light);
+    color: var(--text-color-light);
     padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px var(--shadow-light);
+    transition: var(--transition);
 }
 
 .faq-content h2 {
     margin-top: 0;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    text-align: center;
 }
 
 .faq-content ul {
@@ -67,18 +71,27 @@
 
 .faq-content li {
     margin-bottom: 15px;
+    padding: 10px;
+    background: var(--bg-light);
+    border-radius: 5px;
+    box-shadow: 0 1px 3px var(--shadow-light);
+    transition: var(--transition);
 }
 
-.faq-content strong {
-    font-size: 1.1em;
+.faq-content li:hover {
+    background: var(--secondary-color);
+    color: var(--text-color-dark);
+    transform: translateX(5px);
 }
 
 .no-results {
     text-align: center;
     margin: 20px 0;
     font-size: 1.2em;
-    color: var(--text-light, #000);
+    color: var(--text-color-light);
 }
+
+
 
 .help-center.dark .no-results {
     color: var(--text-dark, #fff);
