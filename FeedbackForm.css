@@ -101,3 +101,47 @@
     color: var(--text-color-dark);
 }
 
+.feedback-form-container.dark .thank-you-message {
+    background-color: var(--bg-dark);
+    color: var(--text-color-dark);
+    box-shadow: 0 2px 4px var(--shadow-dark);
+}
+
+.feedback-form-container.dark input,
+.feedback-form-container.dark textarea,
+.feedback-form-container.dark select {
+    background: var(--card-bg-dark);
+    color: var(--text-color-dark);
+    border: 1px solid var(--secondary-color);
+}
+
+.feedback-form-container.dark input:focus,
+.feedback-form-container.dark textarea:focus,
+.feedback-form-container.dark select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+.feedback-form-container.dark button {
+    background-color: var(--secondary-color);
+    color: var(--text-color-dark);
+}
+
+.feedback-form-container.dark button:hover {
+    background-color: var(--primary-color);
+}
+
+@media (max-width: 600px) {
+    .feedback-form-container {
+        padding: 1.5rem;
+    }
+
+    .feedback-form h1 {
+        font-size: 1.5rem;
+    }
+
+    .feedback-form button {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+    }
+}
