@@ -1,26 +1,46 @@
+:root {
+    --primary-color: #6c63ff;
+    --secondary-color: #A89CFF;
+    --text-color-light: #333;
+    --text-color-dark: #fff;
+    --bg-light: #f4f4f9;
+    --bg-dark: #222;
+    --card-bg-light: #fff;
+    --card-bg-dark: #333;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(255, 255, 255, 0.1);
+    --border-radius: 10px;
+    --transition: all 0.3s ease-in-out;
+  }
+
 .feedback-form-container {
     margin: 2rem auto;
     padding: 2rem;
     max-width: 600px;
-    background-color: var(--background-light);
-    color: var(--text-light);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: var(--bg-light);
+    color: var(--text-color-light);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px var(--shadow-light);
+    transition: var(--transition);
 }
 
 .feedback-form-container.dark {
-    background-color: var(--background-dark);
-    color: var(--text-dark);
+    background-color: var(--bg-dark);
+    color: var(--text-color-dark);
+    box-shadow: 0 4px 8px var(--shadow-dark);
 }
 
 .feedback-form h1 {
     text-align: center;
     margin-bottom: 1rem;
+    color: var(--primary-color);
 }
 
 .feedback-form label {
     display: block;
-    margin-bottom: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--text-color-light);
 }
 
 .feedback-form input,
