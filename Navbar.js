@@ -70,7 +70,7 @@ const Navbar = () => {
                                 <NavLink to="/progress-trends">Progress & Trends</NavLink>
                             </li>
                             <li>
-                                <NavLink to="/feeding-patterns">Feeding Patterns</NavLink>
+                                <NavLink to="/feeding-pattern-generator">Feeding Patterns</NavLink>
                             </li>
                         </ul>
                     )}
