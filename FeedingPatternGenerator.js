@@ -54,8 +54,8 @@ const FeedingPatternGenerator = () => {
     return (
         <div className="feeding-pattern-container">
             <h1>Feeding Pattern Generator</h1>
-            <label>
-                Set Feeding Interval (hours):
+            <p>Generate a visual feeding pattern based on your preferred time interval.</p>
+            <label htmlFor="interval">Set Feeding Interval (hours):</label>
                 <input
                     type="number"
                     min="1"
@@ -64,26 +64,34 @@ const FeedingPatternGenerator = () => {
                     value={interval}
                     onChange={handleIntervalChange}
                 />
-            </label>
             <div className="button-group">
-                <button className="feeding-pattern-btn" onClick={handleGeneratePattern}>
+                <button className="btn primary" onClick={handleGeneratePattern}>
                     Generate Patterns
                 </button>
-                <button className="feeding-pattern-btn reset" onClick={handleReset}>
+                <button className="btn secondary" onClick={handleReset}>
                     Reset to Default
                 </button>
-                <button className="feeding-pattern-btn export" onClick={handleExportCSV}>
+                <button className="btn success" onClick={handleExportCSV}>
                     Export CSV
                 </button>
             </div>
-            <ResponsiveContainer width="100%" height={300}>
-                <LineChart data={feedings}>
-                    <XAxis dataKey="time" />
-                    <YAxis domain={[0, 2]} hide />
-                    <Tooltip />
-                    <Line type="monotone" dataKey="feed" stroke="#6c63ff" strokeWidth={2} dot={{ r: 5 }} />
-                </LineChart>
-            </ResponsiveContainer>
+
+            <div className="chart-container">
+                <ResponsiveContainer width="100%" height={300}>
+                    <LineChart data={feedings}>
+                        <XAxis dataKey="time" />
+                        <YAxis domain={[0, 2]} hide />
+                        <Tooltip />
+                        <Line 
+                            type="monotone" 
+                            dataKey="feed" 
+                            stroke="#6c63ff" 
+                            strokeWidth={2} 
+                            dot={{ r: 5 }} 
+                        />
+                    </LineChart>
+                </ResponsiveContainer>
+            </div>
         </div>
     );
 };
