@@ -1,55 +1,50 @@
-.app-footer {
-    background-color: var(--background-dark);
-    color: var(--text-dark);
-    padding: 20px 10px;
-    text-align: center;
-}
+:root {
+    --primary-color: #6c63ff;
+    --secondary-color: #A89CFF;
+    --text-color-light: #333;
+    --text-color-dark: #fff;
+    --bg-light: #f4f4f9;
+    --bg-dark: #222;
+    --card-bg-light: #fff;
+    --card-bg-dark: #333;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(255, 255, 255, 0.1);
+    --border-radius: 10px;
+    --transition: all 0.3s ease-in-out;
+  }
 
 .footer-content {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
-.footer-section {
-    max-width: 300px;
+.footer-content p {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--secondary-color);
 }
 
-.footer-section h3 {
-    font-size: 1.2em;
-    margin-bottom: 10px;
+.footer-nav {
+    display: flex;
+    gap: 15px;
 }
 
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-section ul li {
-    margin: 5px 0;
-}
-
-.footer-section ul li a {
-    color: var(--text-dark);
+.footer-nav a {
+    color: var(--primary-color);
     text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-.footer-section ul li a:hover {
-    text-decoration: underline;
+.footer-nav a:hover {
+    color: var(--secondary-color);
 }
 
-.social-media a {
-    margin-right: 10px;
-}
-
-.social-media a:hover {
-    color: var(--accent-hover);
-}
-
-.footer-bottom {
-    margin-top: 20px;
-    font-size: 0.9em;
-    border-top: 1px solid var(--accent-color);
-    padding-top: 10px;
+@media (max-width: 600px) {
+    .footer-nav {
+        flex-direction: column;
+        gap: 8px;
+    }
 }
