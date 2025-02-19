@@ -36,6 +36,7 @@ import FeedbackForm from "./Components/FeedbackForm";
 import { ReminderProvider } from "./Contexts/ReminderContext";
 import MilkStashTracker from "./Components/MilkStashTracker";
 import SignUpPage from "./Pages/SignUpPage";
+import FeedingPatternGenerator from "./Pages/FeedingPatternGenerator";
 
 ChartJS.register(
   CategoryScale,
@@ -119,6 +120,7 @@ return (
                 }
               />
               <Route path="/stats" element={<Stats entries={entries} />} />
+              <Route path="/feeding-pattern-generator" element={<FeedingPatternGenerator />} />
               <Route
                 path="/log-entries"
                 element={
