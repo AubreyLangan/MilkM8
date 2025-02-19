@@ -8,29 +8,33 @@ const FeedingPatternGenerator = () => {
     function generateFeedingData(interval) {
         const data = [];
         let currentTime = 0;
-        for (let i = 0; i < 8; i++) {
-            data.push({ time: `${currentTime}:00`, feed:1 });
+        
+        while (currentTime < 24) {
+            data.push({ time: `${currentTime}:00`, feed: 1 });
             currentTime += interval;
-            if (currentTime >= 24) break;
         }
         return data;
     }
 
     const handleIntervalChange = (e) => {
         const newInterval = parseInt(e.target.value, 10);
-        setInterval(newInterval);
-        setFeedings(generateFeedingData(newInterval));
+        if (!isNaN(newInterval) && newInterval > 0) {
+            setInterval(newInterval);
+            setFeedings(generateFeedingData(newInterval));
+        }
+
     };
 
     return (
         <div className="feeding-pattern-container">
             <h1>Feeding Pattern Generator</h1>
             <label>
-                Set Feeding interval (hours):
+                Set Feeding Interval (hours):
                 <input
                     type="number"
                     min="1"
                     max="12"
+                    step="1"
                     value={interval}
                     onChange={handleIntervalChange}
                 />
