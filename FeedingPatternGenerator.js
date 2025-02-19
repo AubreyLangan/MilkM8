@@ -24,7 +24,27 @@ const FeedingPatternGenerator = () => {
 
     return (
         <div className="feeding-pattern-container">
-            
+            <h1>Feeding Pattern Generator</h1>
+            <label>
+                Set Feeding interval (hours):
+                <input
+                    type="number"
+                    min="1"
+                    max="12"
+                    value={interval}
+                    onChange={handleIntervalChange}
+                />
+            </label>
+            <ResponsiveContainer width="100%" height={300}>
+                <LineChart data={feedings}>
+                    <XAxis dataKey="time" />
+                    <YAxis domain={[0, 2]} hide />
+                    <Tooltip />
+                    <Line type="monotone" dataKey="feed" stroke="#6c63ff" strokeWidth={2} dot={{ r: 5 }} />
+                </LineChart>
+            </ResponsiveContainer>
         </div>
-    )
-}
+    );
+};
+
+export default FeedingPatternGenerator;
