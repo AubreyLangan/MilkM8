@@ -37,6 +37,7 @@ import { ReminderProvider } from "./Contexts/ReminderContext";
 import MilkStashTracker from "./Components/MilkStashTracker";
 import SignUpPage from "./Pages/SignUpPage";
 import FeedingPatternGenerator from "./Pages/FeedingPatternGenerator";
+import ProgressTrends from "./Pages/ProgressTrends";
 
 ChartJS.register(
   CategoryScale,
@@ -121,6 +122,7 @@ return (
               />
               <Route path="/stats" element={<Stats entries={entries} />} />
               <Route path="/feeding-pattern-generator" element={<FeedingPatternGenerator />} />
+              <Route path="/progress-trends" element={<ProgressTrends />} />
               <Route
                 path="/log-entries"
                 element={
