@@ -107,6 +107,9 @@ const Navbar = () => {
                     <NavLink to="/settings-page">Settings</NavLink>
                 </li>
                 <li>
+                    <NavLink to="/partner-management">Partner Management</NavLink>
+                </li>
+                <li>
                     <NavLink to="/help-center">Help Center</NavLink>
                 </li>
                 <li>
