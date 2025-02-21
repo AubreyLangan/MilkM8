@@ -38,6 +38,7 @@ import MilkStashTracker from "./Components/MilkStashTracker";
 import SignUpPage from "./Pages/SignUpPage";
 import FeedingPatternGenerator from "./Pages/FeedingPatternGenerator";
 import ProgressTrends from "./Pages/ProgressTrends";
+import PartnerManagement from "./Pages/PartnerManagement";
 
 ChartJS.register(
   CategoryScale,
@@ -156,6 +157,7 @@ return (
                 }
               />
               <Route path="/settings-page" element={<SettingsPage />} />
+              <Route path="/partner-management" element={<PartnerManagement />} />
               <Route
                 path="/help-center"
                 element={<HelpCenter />}
