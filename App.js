@@ -39,6 +39,7 @@ import SignUpPage from "./Pages/SignUpPage";
 import FeedingPatternGenerator from "./Pages/FeedingPatternGenerator";
 import ProgressTrends from "./Pages/ProgressTrends";
 import PartnerManagement from "./Pages/PartnerManagement";
+import TermsOfService from "./Pages/TermsOfService";
 
 ChartJS.register(
   CategoryScale,
@@ -164,6 +165,7 @@ return (
               />
               <Route path="/feedback-form" element={<FeedbackForm />} />
               <Route path="/reminders" element={<ReminderPage />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
             </Routes>
             <Footer />
           </div>
