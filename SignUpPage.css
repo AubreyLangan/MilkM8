@@ -53,3 +53,24 @@
 .signup-link:hover {
     text-decoration: underline;
 }
+
+.tos-checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.tos-checkbox input {
+    margin-right: 5px;
+}
+
+.tos-checkbox a {
+    color: #6c63ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.tos-checkbox a:hover {
+    text-decoration: underline;
+}
