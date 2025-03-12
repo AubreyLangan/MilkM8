@@ -110,6 +110,9 @@ const Navbar = () => {
                     <NavLink to="/partner-management">Partner Management</NavLink>
                 </li>
                 <li>
+                    <NavLink to="/contact-page">Contact Us</NavLink>
+                </li>
+                <li>
                     <NavLink to="/help-center">Help Center</NavLink>
                 </li>
                 <li>
