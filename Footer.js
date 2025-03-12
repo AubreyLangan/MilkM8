@@ -9,7 +9,7 @@ const Footer = () => {
                 <nav className="footer-nav">
                     <a href="/privacy-policy">Privacy Policy</a>
                     <a href="/terms-of-service">Terms of Service</a>
-                    <a href="/contact">Contact</a>
+                    <a href="/contact-page">Contact</a>
                 </nav>
             </div>
         </footer>
