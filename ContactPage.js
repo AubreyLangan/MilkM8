@@ -37,9 +37,34 @@ const ContactPage = () => {
                         required
                     />
 
-                    
+                    <label>Email:</label>
+                    <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                    />
+
+                    <label>Message:</label>
+                    <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                    ></textarea>
+
+                    <button type="submit">Send Message</button>
                 </form>
             )}
+
+            <div className="contact-info">
+                <h3>Other ways to reach us</h3>
+                <p>Email:</p>
+                <p>Follow us on social media:</p>
+            </div>
         </div>
-    )
-}
+    );
+};
+
+export default ContactPage;
